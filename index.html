@@ -1,0 +1,514 @@
+<!doctype html><html><head><meta charset=utf8><title>ReviewLoop</title><meta name="description" content="Website, Google Business Profile and review QR for local businesses. $250 setup."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: galeria escura de estúdio. Abertura com as quatro obras em leque; cada caso é uma sala com a luz da própria paleta. Tema escuro primeiro, claro como alternativa. */
+:root{
+  --bg:#0E0E10; --bg-2:#151518; --panel:#1A1A1E; --ink:#F1EEE8; --muted:#9B978F; --line:rgba(241,238,232,.10);
+  --gold:#D8C3A0; --gold-ink:#141210;
+  --display:"Instrument Serif","Times New Roman",serif;
+  --body:Geist,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F3F1EC; --bg-2:#ECE9E2; --panel:#FFFFFF; --ink:#151413; --muted:#69655E; --line:rgba(21,20,19,.12); --gold:#7A5F33; --gold-ink:#FFFFFF; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F3F1EC; --bg-2:#ECE9E2; --panel:#FFFFFF; --ink:#151413; --muted:#69655E; --line:rgba(21,20,19,.12); --gold:#7A5F33; --gold-ink:#FFFFFF; color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,figure{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+:root[data-lang="pt"] .en,:root:not([data-lang="pt"]) .pt{display:none!important}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.serif{font-family:var(--display);font-weight:400;letter-spacing:-.01em}
+
+@supports (animation-timeline:view()){
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+@keyframes rise{from{opacity:.55;transform:translateY(32px)}to{opacity:1;transform:none}}
+
+/* Barra flutuante */
+.bar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;z-index:30;pointer-events:none}
+.bar .pill{pointer-events:auto;max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:18px;height:56px;padding:0 10px 0 20px;border-radius:999px;
+  background:color-mix(in srgb,var(--bg-2) 80%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px var(--line)}
+.bar .holder{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sig{font-family:var(--display);font-size:22px;text-decoration:none;white-space:nowrap}
+.sig i{color:var(--gold)}
+.bar nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.bar nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.bar nav a:hover{color:var(--ink)}
+.lang{display:inline-flex;border-radius:999px;padding:3px;box-shadow:inset 0 0 0 1px var(--line)}
+.lang button{font:500 12px/1 var(--body);border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.cta-s{font:500 13.5px/1 var(--body);text-decoration:none;background:var(--gold);color:var(--gold-ink);padding:11px 16px;border-radius:999px;white-space:nowrap}
+
+/* Abertura */
+.hero{position:relative;padding-top:calc(env(safe-area-inset-top,0px) + 150px);padding-bottom:40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;background:
+  radial-gradient(40% 35% at 18% 30%,rgba(14,51,36,.55),transparent 70%),
+  radial-gradient(35% 30% at 78% 20%,rgba(13,31,53,.7),transparent 70%),
+  radial-gradient(30% 30% at 60% 80%,rgba(127,184,168,.18),transparent 70%);pointer-events:none;animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(3%,2%,0) scale(1.05)}}
+.hero .wrap{position:relative}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(54px,9.4vw,138px);line-height:.92;letter-spacing:-.025em;max-width:11ch}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.rot{display:inline-grid;vertical-align:bottom;height:1.02em;overflow:hidden}
+.rot span{grid-area:1/1;animation:cycle 18s infinite both;font-style:italic;color:var(--gold);opacity:0;white-space:nowrap}
+.rot span:nth-child(2){animation-delay:3s}.rot span:nth-child(3){animation-delay:6s}.rot span:nth-child(4){animation-delay:9s}.rot span:nth-child(5){animation-delay:12s}.rot span:nth-child(6){animation-delay:15s}
+@keyframes cycle{0%{opacity:0;transform:translateY(.4em)}2%,15%{opacity:1;transform:none}17%,100%{opacity:0;transform:translateY(-.4em)}}
+.rot span:first-child{opacity:1;animation-name:cycle1}
+@keyframes cycle1{0%,15%{opacity:1;transform:none}17%,98%{opacity:0;transform:translateY(-.4em)}100%{opacity:1;transform:none}}
+/* Abrangência */
+.scope{padding-block:clamp(80px,10vw,140px) 0}
+.scope .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);margin-top:44px}
+.scope h3{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;list-style:none;margin:0;padding:0}
+.fields li{padding:14px 0;border-top:1px solid var(--line);min-width:0}
+.fields b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.fields small{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+.deliv{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.deliv li{font-size:14.5px;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:var(--bg-2)}
+.scope .more{margin-top:22px;color:var(--muted);font-size:15px;max-width:48ch}
+@media (max-width:980px){.scope .grid{grid-template-columns:1fr}}
+@media (max-width:520px){.fields{grid-template-columns:1fr}}
+.hero .sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-top:36px}
+.hero .sub p{max-width:48ch;color:var(--muted);font-size:clamp(16px,1.5vw,18px)}
+.hero .acts{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px/1 var(--body);text-decoration:none;padding:15px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:var(--gold);color:var(--gold-ink)}
+.btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+
+/* Leque de prévias */
+.fan{position:relative;height:clamp(300px,42vw,520px);margin-top:56px;perspective:1600px}
+.fan .shot{position:absolute;top:0;width:min(58%,640px);aspect-ratio:16/10;max-width:100%;border-radius:14px;overflow:hidden;background:var(--panel);box-shadow:0 40px 90px -40px rgba(0,0,0,.8),inset 0 0 0 1px var(--line);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.fan .shot iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
+.fan .a{left:0;transform:rotate(-6deg) translateY(40px);z-index:1}
+.fan .b{left:50%;margin-left:calc(min(58%,640px) / -2);z-index:3;transform:translateY(0)}
+.fan .c{right:0;transform:rotate(6deg) translateY(40px);z-index:2}
+.fan:hover .a{transform:rotate(-9deg) translate(-20px,30px)}
+.fan:hover .c{transform:rotate(9deg) translate(20px,30px)}
+.fan .shot{animation:float 7s ease-in-out infinite}
+.fan .b{animation-delay:-2s}.fan .c{animation-delay:-4s}
+@keyframes float{50%{translate:0 -10px}}
+
+/* Fatos */
+.facts{border-block:1px solid var(--line);margin-top:72px}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fact{padding:26px 20px 24px;min-width:0}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1}
+.fact > span{display:block;margin-top:8px;color:var(--muted);font-size:14px}
+
+.marquee{overflow:hidden;padding-block:26px;border-bottom:1px solid var(--line)}
+.marquee .track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.marquee span{font-family:var(--display);font-style:italic;font-size:clamp(26px,3vw,40px);color:var(--muted);padding-right:56px;white-space:nowrap}
+.marquee span::after{content:"·";padding-left:56px;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Trabalhos */
+.work-head{padding-block:clamp(80px,10vw,140px) 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end}
+.h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,92px);line-height:.95;letter-spacing:-.02em}
+.h2 em{font-style:italic;color:var(--gold)}
+.work-head p{color:var(--muted);max-width:44ch}
+
+.case{position:relative;margin-bottom:28px;border-radius:28px;overflow:hidden;background:var(--bg-2);box-shadow:inset 0 0 0 1px var(--line)}
+.case::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at var(--gx,85%) 50%,var(--glow),transparent 70%);opacity:.9;pointer-events:none}
+.case .in{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:clamp(28px,4vw,56px);padding:clamp(24px,4vw,52px);align-items:center}
+.case.flip .in{grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr)}
+.case.flip .txt{order:2}
+.case .idx{display:flex;gap:12px;align-items:center}
+.case .idx .tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.case h3{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.4vw,60px);line-height:1;letter-spacing:-.015em;margin-top:18px}
+.case p.one{color:var(--muted);margin-top:14px;max-width:42ch}
+.meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 18px;margin-top:26px;font-size:14px;align-items:center}
+.meta dt{font:500 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;min-width:0}
+.sws{display:flex;gap:4px}
+.sws i{width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:12.5px;padding:5px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.case .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.case .acts .btn{padding:13px 18px;font-size:14px}
+
+.device{border-radius:16px;padding:8px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line),0 50px 100px -50px rgba(0,0,0,.9);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.case:hover .device{transform:translateY(-6px) rotate(-.4deg)}
+.device .top{display:flex;align-items:center;gap:6px;padding:4px 8px 10px}
+.device .top i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.device .top span{margin-left:8px;font:400 11px/1 var(--mono);color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.screen{position:relative;aspect-ratio:16/10;max-width:100%;overflow:hidden;border-radius:9px;background:#fff}
+.screen iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
+.screen a{position:absolute;inset:0;z-index:2}
+.screen .hint{position:absolute;right:10px;bottom:10px;z-index:3;font:500 11.5px/1 var(--body);background:rgba(10,10,12,.78);color:#fff;padding:8px 11px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .3s}
+.case:hover .screen .hint{opacity:1}
+.pages{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pages button{font:500 12px/1 var(--body);background:transparent;border:0;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer}
+.pages button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+.c1{--glow:rgba(14,80,52,.55)} .c2{--glow:rgba(24,58,98,.75);--gx:15%} .c3{--glow:rgba(34,102,237,.32)} .c4{--glow:rgba(127,184,168,.35);--gx:15%}
+
+/* Direções */
+.dirs{padding-block:clamp(80px,10vw,140px)}
+.dgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
+.d{border-radius:20px;padding:22px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;transition:transform .35s}
+.d:hover{transform:translateY(-6px)}
+.d .aa{font-size:96px;line-height:.9}
+.d b{font-size:15px;font-weight:600}
+.d small{display:block;font-family:var(--mono);font-size:11px;opacity:.75;margin-top:4px}
+.d1{background:#0E3324;color:#F8F6F2}.d1 .aa{font-family:"Cormorant Garamond",serif;font-style:italic;color:#D9A27E}
+.d2{background:#0D1F35;color:#fff}.d2 .aa{font-family:"Playfair Display",serif;font-weight:700;color:#D4AF37}
+.d3{background:#FFFFFF;color:#34363A}.d3 .aa{font-family:"Source Serif 4",serif;color:#2266ED}
+.d4{background:#F4F5F2;color:#0F1E24}.d4 .aa{font-family:"Young Serif",serif;color:#2F6F62}
+
+/* Processo */
+.proc{border-top:1px solid var(--line);padding-block:clamp(80px,10vw,140px)}
+.proc .grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font-family:var(--display);font-size:34px;line-height:1;color:var(--gold)}
+.steps h3{font-size:19px;font-weight:600}
+.steps p{color:var(--muted);margin-top:6px;font-size:15px}
+.incl{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.incl span{font-size:13.5px;padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+
+/* Contato */
+.end{padding-block:clamp(80px,10vw,140px);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.end::before{content:"";position:absolute;left:50%;top:60%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(216,195,160,.16),transparent);pointer-events:none}
+.end .h2{max-width:13ch;margin:0 auto}
+.end p{color:var(--muted);max-width:44ch;margin:22px auto 0}
+.mail{position:relative;display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:32px;padding:8px 8px 8px 20px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:var(--panel);max-width:100%}
+.mail code{font:400 15px/1.3 var(--mono);user-select:all;overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .bar nav{display:none}.lang{margin-left:auto}
+  .case .in,.case.flip .in{grid-template-columns:1fr}.case.flip .txt{order:0}
+  .work-head,.proc .grid,.hero .sub{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr 1fr}
+  .facts .wrap{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .cta-s{display:none}
+  .fan .a,.fan .c{display:none}.fan .b{width:100%;left:0;margin-left:0}.fan{height:auto;aspect-ratio:16/10}
+  .dgrid{grid-template-columns:1fr}
+  .d{min-height:200px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.rot span{opacity:0!important}.rot span:first-child{opacity:1!important}}
+/* ReviewLoop: projeto de SEO local */
+.c0{--glow:rgba(216,195,160,.22);--gx:80%}
+.seo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.panel{background:var(--panel);border-radius:18px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);min-width:0}
+.tog{display:inline-flex;border-radius:999px;padding:3px;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:14px}
+.tog button{font:500 12.5px/1 var(--body);border:0;background:transparent;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pack .row{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.pack .row:first-child{border-top:0}
+.pack .pos{font-family:var(--display);font-size:26px;line-height:1;color:var(--muted)}
+.pack .nm{font-weight:500;font-size:15px}
+.pack .mt{font-size:12.5px;color:var(--muted)}
+.pack .you{background:color-mix(in srgb,var(--gold) 14%,transparent);margin-inline:-22px;padding-inline:22px}
+.pack .you .pos{color:var(--gold)}
+.star{color:var(--gold);letter-spacing:.08em}
+.qr{display:block;width:100%;max-width:210px;aspect-ratio:1;background:#fff;border-radius:10px;padding:8px;margin:12px auto 14px}
+.qrp{text-align:center}
+.qrp b{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1;display:block}
+.qrp small{display:block;color:var(--muted);font-size:13.5px;margin-top:6px}
+.note{color:var(--muted);font-size:13px;margin-top:14px}
+.plans{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:14px;margin-top:40px}
+.plan{border-radius:24px;padding:clamp(24px,3vw,40px);box-shadow:inset 0 0 0 1px var(--line);background:var(--bg-2);min-width:0}
+.plan.main{background:var(--gold);color:var(--gold-ink);box-shadow:none}
+.plan .amt{font-family:var(--display);font-size:clamp(64px,8vw,104px);line-height:.95;margin:14px 0 6px}
+.plan .amt small{font:400 15px var(--body);opacity:.75;margin-left:6px}
+.plan ul{list-style:none;margin:20px 0 0;padding:0}
+.plan li{padding:11px 0;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent);font-size:15px}
+.plan .label{color:inherit;opacity:.7}
+.m1{margin-top:18px}
+@media (max-width:980px){.seo-grid,.plans{grid-template-columns:1fr}}
+
+.lead{max-width:760px;margin:36px auto 0;text-align:left}
+.lead .f2{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0;margin-top:14px}
+.lead .f2 .fld{margin-top:0}
+.fld label{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld select,.fld textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--panel);border:0;border-radius:12px;padding:14px 16px;box-shadow:inset 0 0 0 1px var(--line);width:100%;min-width:0}
+.fld textarea{resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.send{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.send .btn[disabled]{opacity:.6;cursor:wait}
+.msg{margin:0;font-size:14.5px;color:var(--muted)}
+.msg.ok{color:var(--gold)}.msg.err{color:#E58C7A}
+.lead .note{margin-top:14px}
+@media (max-width:640px){.lead .f2{grid-template-columns:1fr}}
+</style>
+
+<div class="bar"><div class="holder"><div class="pill">
+  <a class="sig" href="#top">Review<i>Loop</i></a>
+  <nav aria-label="Menu">
+    <a href="#seo"><span class="pt">SEO local</span><span class="en">Local SEO</span></a>
+    <a href="#trabalhos"><span class="pt">Sites</span><span class="en">Websites</span></a>
+    <a href="#preco"><span class="pt">Preço</span><span class="en">Pricing</span></a>
+    <a href="#processo"><span class="pt">Processo</span><span class="en">Process</span></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" id="lang-en" data-l="en" aria-pressed="true">EN</button><button type="button" id="lang-pt" data-l="pt" aria-pressed="false">PT</button></div>
+  <a class="cta-s" href="#contato"><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></a>
+</div></div></div>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <p class="label"><span class="pt">Site + Google Business Profile + avaliações · negócios locais nos EUA</span><span class="en">Website + Google Business Profile + reviews · local businesses in the US</span></p>
+    <h1 style="margin-top:22px">
+      <span class="pt">Seja <em>encontrado.</em> Seja <em>avaliado.</em> Receba a ligação.</span>
+      <span class="en">Get <em>found.</em> Get <em>reviewed.</em> Get the call.</span>
+    </h1>
+    <div class="sub">
+      <p><span class="pt">Criamos o site, otimizamos o seu perfil no Google e colocamos um cartão com QR code no balcão, para o cliente satisfeito deixar uma avaliação em 20 segundos. Um preço, uma configuração.</span><span class="en">We build your website, optimize your Google Business Profile and put a QR card on your counter so happy customers can leave a review in 20 seconds. One price, one setup.</span></p>
+      <div class="acts"><a class="btn gold" href="#seo"><span class="pt">Ver o projeto</span><span class="en">See the project</span> &darr;</a><a class="btn ghost" href="#contato"><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></a></div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <div class="shot a" data-fit><iframe tabindex="-1" title="" data-src="samples/beauty.html"></iframe></div>
+      <div class="shot c" data-fit><iframe tabindex="-1" title="" data-src="samples/legal.html"></iframe></div>
+      <div class="shot b" data-fit><iframe tabindex="-1" title="" data-src="samples/dental.html"></iframe></div>
+    </div>
+  </div>
+  <div class="facts"><div class="wrap">
+    <div class="fact"><b>$250</b><span><span class="pt">configuração única</span><span class="en">one-time setup</span></span></div>
+    <div class="fact"><b>5 – 7</b><span><span class="pt">dias úteis para entregar</span><span class="en">business days to deliver</span></span></div>
+    <div class="fact"><b>20 s</b><span><span class="pt">para o cliente avaliar por QR</span><span class="en">for a customer to review by QR</span></span></div>
+    <div class="fact"><b>$49</b><span><span class="pt">por mês, manutenção opcional</span><span class="en">per month, optional care</span></span></div>
+  </div></div>
+  <div class="marquee" aria-hidden="true"><div class="track">
+    <span class="pt">Encanadores</span><span class="pt">Ar-condicionado</span><span class="pt">Dedetização</span><span class="pt">Paisagismo</span><span class="pt">Salões</span><span class="pt">Barbearias</span><span class="pt">Estética</span><span class="pt">Eletricistas</span><span class="pt">Dentistas</span><span class="pt">Advogados</span><span class="pt">Encanadores</span><span class="pt">Ar-condicionado</span><span class="pt">Dedetização</span><span class="pt">Paisagismo</span><span class="pt">Salões</span><span class="pt">Barbearias</span><span class="pt">Estética</span><span class="pt">Eletricistas</span><span class="pt">Dentistas</span><span class="pt">Advogados</span>
+    <span class="en">Plumbers</span><span class="en">HVAC</span><span class="en">Pest control</span><span class="en">Landscaping</span><span class="en">Salons</span><span class="en">Barbers</span><span class="en">Skin clinics</span><span class="en">Electricians</span><span class="en">Dentists</span><span class="en">Law firms</span><span class="en">Plumbers</span><span class="en">HVAC</span><span class="en">Pest control</span><span class="en">Landscaping</span><span class="en">Salons</span><span class="en">Barbers</span><span class="en">Skin clinics</span><span class="en">Electricians</span><span class="en">Dentists</span><span class="en">Law firms</span>
+  </div></div>
+</section>
+
+<section class="wrap" id="seo">
+  <div class="work-head">
+    <h2 class="h2 rv"><span class="pt">O projeto de <em>SEO local</em></span><span class="en">The <em>local SEO</em> project</span></h2>
+    <p class="rv"><span class="pt">Quando alguém pesquisa "encanador perto de mim", o Google mostra três negócios. Avaliações recentes, perfil completo e um site coerente com o perfil decidem quem aparece. O sistema abaixo cuida das quatro partes.</span><span class="en">When someone searches "plumber near me", Google shows three businesses. Recent reviews, a complete profile and a site that matches it decide who makes the list. The system below handles all four parts.</span></p>
+  </div>
+
+  <article class="case c0 rv">
+    <div class="in" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr)">
+      <div class="txt">
+        <div class="idx"><span class="tag"><span class="pt">Sistema completo</span><span class="en">Complete system</span></span><span class="tag">EN</span></div>
+        <h3><span class="pt">Perfil, site e avaliações em um só ciclo</span><span class="en">Profile, site and reviews in one loop</span></h3>
+        <p class="one"><span class="pt">Cada avaliação nova reforça o perfil, o perfil leva ao site, o site gera a ligação e a ligação vira mais uma avaliação.</span><span class="en">Each new review strengthens the profile, the profile leads to the site, the site produces the call, and the call becomes another review.</span></p>
+        <dl class="meta">
+          <dt><span class="pt">Perfil</span><span class="en">Profile</span></dt><dd class="chips"><span class="pt">Categorias</span><span class="en">Categories</span><span class="pt">Serviços</span><span class="en">Services</span><span class="pt">Horários</span><span class="en">Hours</span><span class="pt">Fotos</span><span class="en">Photos</span></dd>
+          <dt><span class="pt">Site</span><span class="en">Site</span></dt><dd class="chips"><span class="pt">Mobile primeiro</span><span class="en">Mobile first</span><span class="pt">Ligar e rotas</span><span class="en">Call and directions</span><span>Schema</span></dd>
+          <dt><span class="pt">Avaliações</span><span class="en">Reviews</span></dt><dd class="chips"><span class="pt">Cartão QR</span><span class="en">QR card</span><span class="pt">Modelos de SMS</span><span class="en">Text templates</span><span class="pt">Respostas prontas</span><span class="en">Reply templates</span></dd>
+        </dl>
+        <p class="note"><span class="pt">Pedimos avaliação a todos os clientes, nunca só aos satisfeitos. O Google proíbe filtrar quem recebe o convite.</span><span class="en">We ask every customer for a review, never only the happy ones. Google forbids filtering who gets the invite.</span></p>
+      </div>
+      <div class="seo-grid">
+        <div class="panel">
+          <p class="label" style="margin-bottom:12px"><span class="pt">Resultado do mapa · exemplo ilustrativo</span><span class="en">Map results · illustrative example</span></p>
+          <div class="tog" role="group" aria-label="Before or after"><button type="button" id="b-before" aria-pressed="true"><span class="pt">Antes</span><span class="en">Before</span></button><button type="button" id="b-after" aria-pressed="false"><span class="pt">Depois de 90 dias</span><span class="en">After 90 days</span></button></div>
+          <div class="pack" id="pack" aria-live="polite"></div>
+          <p class="note"><span class="pt">Negócios inventados. Mostra a ideia, não o resultado de um cliente.</span><span class="en">Made-up businesses. It shows the idea, not a client's result.</span></p>
+        </div>
+        <div class="panel qrp">
+          <p class="label"><span class="pt">Cartão do balcão · exemplo</span><span class="en">Counter card · sample</span></p>
+          <canvas class="qr" id="qr" width="250" height="250" role="img" aria-label="Sample QR, not scannable"></canvas>
+          <b><span class="pt">Gostou do atendimento?</span><span class="en">Enjoyed your visit?</span></b>
+          <small><span class="pt">Escaneie e deixe uma avaliação no Google. Leva 20 segundos.</span><span class="en">Scan to leave a Google review. It takes 20 seconds.</span></small>
+          <p class="note"><span class="pt">QR decorativo. O real aponta para o seu link de avaliação.</span><span class="en">Decorative QR. The real one points to your review link.</span></p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="wrap" id="trabalhos">
+  <div class="work-head" style="padding-top:clamp(40px,6vw,80px)">
+    <h2 class="h2 rv"><span class="pt">O site que <em>acompanha</em></span><span class="en">The website that <em>goes with it</em></span></h2>
+    <p class="rv"><span class="pt">Projetos de demonstração com nomes e dados fictícios, feitos para mostrar a qualidade de design e de construção. Abra qualquer um para navegar.</span><span class="en">Demonstration projects with fictional names and details, built to show design and build quality. Open any of them to browse.</span></p>
+  </div>
+
+  <article class="case c1 rv">
+    <div class="in">
+      <div class="txt">
+        <div class="idx"><span class="tag"><span class="pt">Saúde · estética</span><span class="en">Health · aesthetics</span></span></div>
+        <h3><span class="pt">Clínica de pele</span><span class="en">Skin clinic</span></h3>
+        <p class="one"><span class="pt">Página única com tom de revista, agendamento por mensagem e blocos que alternam verde-musgo e cobre.</span><span class="en">A one-page magazine-style site with message booking and blocks alternating moss green and copper.</span></p>
+        <dl class="meta">
+          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#0E3324"></i><i style="background:#B9774F"></i><i style="background:#D9A27E"></i><i style="background:#E3DACB"></i><i style="background:#F8F6F2"></i></dd>
+          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Agendamento</span><span class="en">Booking</span><span class="pt">Menu que muda de cor</span><span class="en">Colour-shifting menu</span></dd>
+        </dl>
+        <div class="acts"><a class="btn gold" href="samples/beauty.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
+      </div>
+      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>skin-clinic · demo</span></div>
+        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/beauty.html"></iframe><a href="samples/beauty.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
+    </div>
+  </article>
+
+  <article class="case c4 flip rv">
+    <div class="in">
+      <div class="txt">
+        <div class="idx"><span class="tag"><span class="pt">Odontologia · EUA</span><span class="en">Dentistry · USA</span></span><span class="tag"><span class="pt">Nativo em inglês</span><span class="en">English-native</span></span></div>
+        <h3>Northline Dental Studio</h3>
+        <p class="one"><span class="pt">Escrito do zero em inglês para o mercado americano: preços à vista, primeira consulta sem pressa e animações suaves ao rolar.</span><span class="en">Written from scratch in English for the US market: prices up front, an unhurried first visit and gentle scroll animations.</span></p>
+        <dl class="meta">
+          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#F4F5F2"></i><i style="background:#0F1E24"></i><i style="background:#7FB8A8"></i><i style="background:#2F6F62"></i><i style="background:#E7D8BE"></i></dd>
+          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Tabela de preços</span><span class="en">Price list</span><span class="pt">Pedido de consulta</span><span class="en">Booking request</span></dd>
+        </dl>
+        <div class="acts"><a class="btn gold" href="samples/dental.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
+      </div>
+      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>northline-dental · demo</span></div>
+        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/dental.html"></iframe><a href="samples/dental.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
+    </div>
+  </article>
+
+  <article class="case c3 rv">
+    <div class="in">
+      <div class="txt">
+        <div class="idx"><span class="tag"><span class="pt">Serviços profissionais</span><span class="en">Professional services</span></span></div>
+        <h3><span class="pt">Escritório de advocacia</span><span class="en">Law firm</span></h3>
+        <p class="one"><span class="pt">Uma área de atuação explicada como produto: painel de exemplo, gráfico que acompanha a leitura e um teste curto com resultado na hora.</span><span class="en">A practice area explained like a product: a sample dashboard, a chart that follows the reader and a short check with an instant result.</span></p>
+        <dl class="meta">
+          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#FFFFFF"></i><i style="background:#F5F6F6"></i><i style="background:#34363A"></i><i style="background:#2266ED"></i><i style="background:#050607"></i></dd>
+          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Teste de 6 perguntas</span><span class="en">6-question check</span><span class="pt">Tema escuro</span><span class="en">Dark mode</span></dd>
+        </dl>
+        <div class="acts"><a class="btn gold" href="samples/legal.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
+      </div>
+      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>law-firm · demo</span></div>
+        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/legal.html"></iframe><a href="samples/legal.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
+    </div>
+  </article>
+</section>
+
+<section class="wrap" id="preco" style="padding-block:clamp(40px,6vw,80px) clamp(60px,8vw,100px)">
+  <p class="label rv"><span class="pt">Preço</span><span class="en">Pricing</span></p>
+  <h2 class="h2 rv" style="margin-top:16px;max-width:16ch"><span class="pt">Um preço de entrada. <em>Manutenção opcional.</em></span><span class="en">One setup price. <em>Optional care.</em></span></h2>
+  <div class="plans">
+    <div class="plan main rv">
+      <span class="label"><span class="pt">Configuração</span><span class="en">Setup</span></span>
+      <div class="amt">$250<small><span class="pt">uma vez</span><span class="en">one time</span></small></div>
+      <p><span class="pt">Site, perfil do Google, SEO local básico e kit de avaliações por QR.</span><span class="en">Website, Google Business Profile, local SEO basics and the review QR kit.</span></p>
+      <ul>
+        <li><span class="pt">Entrega em 5 a 7 dias úteis</span><span class="en">Delivered in 5 to 7 business days</span></li>
+        <li><span class="pt">Prévia antes de pagar o saldo</span><span class="en">Preview before you pay the balance</span></li>
+        <li><span class="pt">Uma rodada de ajustes incluída</span><span class="en">One revision round included</span></li>
+        <li><span class="pt">Site, perfil e domínio ficam na sua conta</span><span class="en">Site, profile and domain stay in your account</span></li>
+      </ul>
+    </div>
+    <div class="plan rv">
+      <span class="label"><span class="pt">Manutenção</span><span class="en">Care plan</span></span>
+      <div class="amt">$49<small><span class="pt">por mês</span><span class="en">per month</span></small></div>
+      <p style="color:var(--muted)"><span class="pt">Opcional. Cancele em qualquer mês.</span><span class="en">Optional. Cancel any month.</span></p>
+      <ul>
+        <li><span class="pt">Atualizações de conteúdo e horários</span><span class="en">Content and hours updates</span></li>
+        <li><span class="pt">Um post mensal no Google</span><span class="en">One Google post a month</span></li>
+        <li><span class="pt">Resumo mensal de avaliações e ligações</span><span class="en">Monthly reviews and calls summary</span></li>
+        <li><span class="pt">Hospedagem e segurança</span><span class="en">Hosting and security</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="proc" id="processo"><div class="wrap grid">
+  <div class="rv">
+    <p class="label"><span class="pt">Processo</span><span class="en">Process</span></p>
+    <h2 class="h2" style="margin-top:16px"><span class="pt">Da auditoria ao <em>site no ar</em></span><span class="en">From audit to <em>live site</em></span></h2>
+    <div class="incl"><span>Design</span><span class="pt">Texto</span><span class="en">Copywriting</span><span>Google Business Profile</span><span class="pt">Domínio</span><span class="en">Domain</span><span class="pt">Cartão QR</span><span class="en">QR card</span><span>Search Console</span></div>
+  </div>
+  <ol class="steps">
+    <li class="rv"><div><h3><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></h3><p><span class="pt">Você manda o nome do negócio e a cidade. Respondo com o que falta no perfil e no site.</span><span class="en">You send the business name and city. I reply with what is missing on your profile and site.</span></p></div></li>
+    <li class="rv"><div><h3><span class="pt">Prévia</span><span class="en">Preview</span></h3><p><span class="pt">Uma página de exemplo com o seu nome, serviços e cidade, sem compromisso.</span><span class="en">A sample page with your name, services and city, no commitment.</span></p></div></li>
+    <li class="rv"><div><h3><span class="pt">Configuração</span><span class="en">Setup</span></h3><p><span class="pt">Site, perfil do Google e SEO local básico, com a sua aprovação em cada etapa.</span><span class="en">Site, Google profile and local SEO basics, with your approval at each step.</span></p></div></li>
+    <li class="rv"><div><h3><span class="pt">Cartão e avaliações</span><span class="en">Card and reviews</span></h3><p><span class="pt">Cartão QR pronto para imprimir, modelos de mensagem e respostas para boas e más avaliações.</span><span class="en">A print-ready QR card, message templates and replies for good and bad reviews.</span></p></div></li>
+  </ol>
+</div></section>
+
+<section class="end" id="contato"><div class="wrap">
+  <h2 class="h2 rv"><span class="pt">Quer ver como <em>está o seu?</em></span><span class="en">Want to see how <em>yours</em> looks?</span></h2>
+  <p class="rv"><span class="pt">Preencha abaixo. Respondo com uma auditoria gratuita do seu perfil no Google e do seu site, e uma prévia de como a sua página pode ficar.</span><span class="en">Fill in the form below. I reply with a free audit of your Google profile and website, and a preview of how your page could look.</span></p>
+  <form class="lead rv" id="lead" novalidate>
+    <div class="f2">
+      <div class="fld"><label for="f-name"><span class="pt">Seu nome</span><span class="en">Your name</span></label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="fld"><label for="f-email"><span class="pt">E-mail</span><span class="en">Email</span></label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="fld"><label for="f-biz"><span class="pt">Nome do negócio</span><span class="en">Business name</span></label><input id="f-biz" name="business" type="text" required></div>
+      <div class="fld"><label for="f-city"><span class="pt">Cidade e estado</span><span class="en">City and state</span></label><input id="f-city" name="city" type="text" required></div>
+      <div class="fld"><label for="f-type"><span class="pt">Tipo de negócio</span><span class="en">Type of business</span></label>
+        <select id="f-type" name="type"><option>Plumbing</option><option>HVAC</option><option>Pest control</option><option>Landscaping</option><option>Salon or barber</option><option>Skin or beauty clinic</option><option>Electrician</option><option>Other</option></select></div>
+      <div class="fld"><label for="f-link"><span class="pt">Site ou link do Google (opcional)</span><span class="en">Website or Google link (optional)</span></label><input id="f-link" name="link" type="text" autocomplete="url"></div>
+    </div>
+    <div class="fld"><label for="f-msg"><span class="pt">O que você gostaria de melhorar? (opcional)</span><span class="en">What would you like to improve? (optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+    <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+    <div class="send"><button class="btn gold" type="submit" id="f-send"><span class="pt">Pedir auditoria grátis</span><span class="en">Request my free audit</span></button><p class="msg" id="f-msg-out" role="status" aria-live="polite"></p></div>
+    <p class="note"><span class="pt">Usamos seus dados só para responder a este pedido.</span><span class="en">We use your details only to reply to this request.</span></p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 ReviewLoop</span><span><span class="pt">Estúdio web baseado no Brasil. Os sites mostrados são demonstrações com dados fictícios.</span><span class="en">Web studio based in Brazil. The websites shown are demos with fictional data.</span></span></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function rd(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function wr(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var data={
+    en:{before:[["Delta Plumbing","4.8 ★ · 212 reviews",0],["Summit Home Services","4.6 ★ · 148 reviews",0],["Harbor Pipe &amp; Drain","4.7 ★ · 96 reviews",0],["Your business","4.3 ★ · 14 reviews · profile 40%",1]],
+        after:[["Your business","4.8 ★ · 73 reviews · profile 100%",1],["Delta Plumbing","4.8 ★ · 218 reviews",0],["Summit Home Services","4.6 ★ · 151 reviews",0],["Harbor Pipe &amp; Drain","4.7 ★ · 97 reviews",0]]},
+    pt:{before:[["Delta Plumbing","4,8 ★ · 212 avaliações",0],["Summit Home Services","4,6 ★ · 148 avaliações",0],["Harbor Pipe &amp; Drain","4,7 ★ · 96 avaliações",0],["Seu negócio","4,3 ★ · 14 avaliações · perfil 40%",1]],
+        after:[["Seu negócio","4,8 ★ · 73 avaliações · perfil 100%",1],["Delta Plumbing","4,8 ★ · 218 avaliações",0],["Summit Home Services","4,6 ★ · 151 avaliações",0],["Harbor Pipe &amp; Drain","4,7 ★ · 97 avaliações",0]]}};
+  var state='before',pack=document.getElementById('pack');
+  function draw(){
+    var l=root.getAttribute('data-lang')||'en';
+    pack.innerHTML=data[l][state].map(function(d,i){return '<div class="row'+(d[2]?' you':'')+'"><span class="pos">'+(i+1)+'</span><div><div class="nm">'+d[0]+'</div><div class="mt">'+d[1]+'</div></div><span class="star">'+(d[2]?'★':'')+'</span></div>'}).join('');
+    document.getElementById('b-before').setAttribute('aria-pressed',state==='before');
+    document.getElementById('b-after').setAttribute('aria-pressed',state==='after')}
+  document.getElementById('b-before').onclick=function(){state='before';draw()};
+  document.getElementById('b-after').onclick=function(){state='after';draw()};
+  function setLang(l){
+    root.setAttribute('data-lang',l);root.lang=l==='en'?'en':'pt-BR';
+    document.getElementById('lang-pt').setAttribute('aria-pressed',l==='pt');
+    document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
+    wr('lang',l);draw()}
+  document.querySelectorAll('[data-fit] iframe').forEach(function(f){f.setAttribute('src',f.dataset.src+'#preview')});
+  function fit(){document.querySelectorAll('[data-fit]').forEach(function(s){s.querySelector('iframe').style.transform='scale('+(s.clientWidth/1280)+')'})}
+  window.addEventListener('resize',fit);
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+  setLang(location.hash==='#pt'?'pt':(location.hash==='#en'?'en':(rd('lang')||'en')));fit();
+
+  var c=document.getElementById('qr'),x=c.getContext('2d'),n=25,s=c.width/n,seed=7;
+  function r(){seed=(seed*9301+49297)%233280;return seed/233280}
+  x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.fillStyle='#0E0E10';
+  function finder(a,b){x.fillStyle='#0E0E10';x.fillRect(a*s,b*s,7*s,7*s);x.fillStyle='#fff';x.fillRect((a+1)*s,(b+1)*s,5*s,5*s);x.fillStyle='#0E0E10';x.fillRect((a+2)*s,(b+2)*s,3*s,3*s)}
+  for(var i=0;i<n;i++)for(var j=0;j<n;j++){var inF=(i<8&&j<8)||(i>n-9&&j<8)||(i<8&&j>n-9);if(!inF&&r()>.52)x.fillRect(i*s,j*s,s,s)}
+  finder(0,0);finder(n-7,0);finder(0,n-7);
+
+  var form=document.getElementById('lead'),out=document.getElementById('f-msg-out'),sendBtn=document.getElementById('f-send');
+  function T(pt,en){return (root.getAttribute('data-lang')==='pt')?pt:en}
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var f=form.elements;
+    if(f._honey.value){return}
+    if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||!f.business.value.trim()||!f.city.value.trim()){
+      out.className='msg err';out.textContent=T('Preencha nome, e-mail válido, negócio e cidade.','Please add your name, a valid email, business and city.');return}
+    sendBtn.disabled=true;out.className='msg';out.textContent=T('Enviando...','Sending...');
+    var body={name:f.name.value,email:f.email.value,business:f.business.value,city:f.city.value,type:f.type.value,link:f.link.value,message:f.message.value,_subject:'ReviewLoop: new audit request from '+f.business.value,_replyto:f.email.value,_template:'table',_captcha:'false'};
+    fetch('https://formsubmit.co/ajax/leonardodsximenes@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw 0;return j})})
+      .then(function(){form.reset();out.className='msg ok';out.textContent=T('Recebido. Respondo em até 2 dias úteis.','Received. I will reply within 2 business days.')})
+      .catch(function(){out.className='msg err';out.textContent=T('Não foi possível enviar agora. Tente novamente em instantes.','Could not send right now. Please try again shortly.')})
+      .then(function(){sendBtn.disabled=false});
+  });
+})();
+</script>
+
+</body></html>
