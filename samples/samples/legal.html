@@ -1,0 +1,841 @@
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<div class="demo-bar" role="note">
+<a href="../" class="demo-back">&larr; Portfolio</a>
+<span class="demo-txt">Demo project · names, contacts and figures are fictional</span>
+<a href="advocacia-pt.html" class="demo-sw" hreflang="pt-BR">Português</a>
+</div>
+<script>if(location.hash==='#preview'){document.currentScript.previousElementSibling.style.display='none'}</script>
+<style>
+.demo-bar{position:relative;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+padding:8px max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+background:#141414;color:#d9d6cf;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.01em}
+.demo-bar a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 10px}
+.demo-bar a:hover{background:rgba(255,255,255,.1)}
+.demo-txt{flex:1 1 220px;text-align:center;opacity:.85}
+</style>
+<title>Rafael Moura Law</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+<style>
+/* Modelo: missiveapp.com (via Refero). Branco, títulos serifados finos, UI em Inter, azul único de ação,
+   uma "captura de produto" logo abaixo do hero e painéis com borda fina. O "produto" aqui é o contracheque. */
+:root{
+  --fundo:#FFFFFF;
+  --cinza:#F5F6F6;        /* botões secundários, cartões */
+  --cinza-2:#EEF0F2;
+  --borda:#E4E6E9;
+  --titulo:#34363A;       /* títulos serifados */
+  --texto:#34363A;
+  --forte:#050607;
+  --apoio:#646C76;
+  --azul:#2266ED;         /* único acento: ação principal, linha do teto */
+  --azul-txt:#FFFFFF;
+  --azul-claro:#E8F0FE;
+  --noite:#050607;        /* faixa final */
+  --noite-txt:#F5F6F6;
+  --janela:#FFFFFF;
+  --hach:rgba(34,102,237,.16);
+  --t-vermelho:#FDE8E8; --t-vermelho-i:#C2362F;
+  --t-azul:#DCE8FD;     --t-azul-i:#1F5FD6;
+  --t-roxo:#ECE6FB;     --t-roxo-i:#6A4BC4;
+  --t-amarelo:#FDF1CF;  --t-amarelo-i:#9A6A00;
+  --erro:#C2362F;
+  --serif:"Source Serif 4","Tiempos Headline",Georgia,"Times New Roman",serif;
+  --sans:Inter,"Helvetica Neue",Arial,system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --wide:1200px; --mid:1040px; --col:680px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --fundo:#050607;--cinza:#15171A;--cinza-2:#1B1E22;--borda:#272A2F;--titulo:#EEF0F2;--texto:#D9DCE0;--forte:#FFFFFF;--apoio:#9AA1AB;
+  --azul:#5B8FF5;--azul-txt:#050607;--azul-claro:#14213A;--noite:#0E1013;--noite-txt:#F5F6F6;--janela:#111316;--hach:rgba(91,143,245,.22);
+  --t-vermelho:#3A1A19;--t-vermelho-i:#F2958F;--t-azul:#16264A;--t-azul-i:#8FB3F8;--t-roxo:#271D45;--t-roxo-i:#B7A3F0;--t-amarelo:#3A2E0E;--t-amarelo-i:#E8C46A;
+  --erro:#F2958F;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --fundo:#050607;--cinza:#15171A;--cinza-2:#1B1E22;--borda:#272A2F;--titulo:#EEF0F2;--texto:#D9DCE0;--forte:#FFFFFF;--apoio:#9AA1AB;
+  --azul:#5B8FF5;--azul-txt:#050607;--azul-claro:#14213A;--noite:#0E1013;--noite-txt:#F5F6F6;--janela:#111316;--hach:rgba(91,143,245,.22);
+  --t-vermelho:#3A1A19;--t-vermelho-i:#F2958F;--t-azul:#16264A;--t-azul-i:#8FB3F8;--t-roxo:#271D45;--t-roxo-i:#B7A3F0;--t-amarelo:#3A2E0E;--t-amarelo-i:#E8C46A;
+  --erro:#F2958F;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:var(--azul);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+.g{padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.wide{max-width:var(--wide);margin:0 auto}
+.mid{max-width:var(--mid);margin:0 auto}
+.col{max-width:var(--col);margin:0 auto}
+.skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--forte);color:var(--fundo);padding:8px 14px;border-radius:8px}
+.skip:focus{left:12px}
+
+/* Títulos serifados, peso regular, como no modelo */
+.serif{font-family:var(--serif);font-weight:400;color:var(--titulo);letter-spacing:-.012em;text-wrap:balance;font-optical-sizing:auto}
+.h-hero{font-size:clamp(38px,6vw,60px);line-height:1.08}
+.h-sec{font-size:clamp(32px,4.6vw,52px);line-height:1.1}
+.lead{font-size:clamp(17px,1.6vw,19px);line-height:1.5;color:var(--apoio);max-width:52ch}
+.centro{text-align:center}
+.centro .lead{margin-inline:auto}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:500;line-height:1;border:0;cursor:pointer;
+  border-radius:8px;padding:14px 20px;background:var(--azul);color:var(--azul-txt);transition:filter .15s var(--ease),transform .15s var(--ease)}
+.btn:hover{text-decoration:none;filter:brightness(1.07)}
+.btn:active{transform:scale(.98)}
+.btn.sec{background:var(--cinza);color:var(--texto);box-shadow:inset 0 0 0 1px var(--borda)}
+.btn.sec:hover{filter:none;background:var(--cinza-2)}
+.btn.sm{font-size:14px;padding:10px 14px}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+
+/* Barra de navegação */
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:color-mix(in srgb,var(--fundo) 88%,transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
+.topo .in{max-width:var(--wide);margin:0 auto;height:60px;display:flex;align-items:center;gap:36px}
+.marca{display:flex;align-items:center;gap:10px;color:var(--forte);white-space:nowrap}
+.marca:hover{text-decoration:none}
+.marca svg{flex:none}
+.marca b{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.marca small{font-size:13px;color:var(--apoio);font-weight:400;margin-left:2px}
+.topo nav{display:flex;gap:26px;font-size:14px}
+.topo nav a{color:var(--texto)}
+.topo nav a:hover{color:var(--azul);text-decoration:none}
+.topo .dir{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:14px}
+.topo .dir a.txt{color:var(--texto)}
+
+/* Hero */
+.hero{padding-top:clamp(56px,8vw,96px);text-align:center}
+.hero .lead{margin-top:22px}
+
+/* Vitrine: moldura escura + "papel de parede" + janela do produto */
+.vitrine{max-width:var(--wide);margin:clamp(48px,6vw,72px) auto 0;background:var(--noite);border-radius:18px 18px 0 0;padding:12px 12px 0}
+.parede{border-radius:10px 10px 0 0;overflow:hidden;padding:clamp(20px,4vw,56px) clamp(12px,4vw,56px) 0;
+  background:
+    radial-gradient(120% 70% at 20% 100%,#C9B892 0%,transparent 60%),
+    radial-gradient(90% 60% at 85% 95%,#8C9C83 0%,transparent 55%),
+    linear-gradient(180deg,#A9C1DB 0%,#CFD9E2 52%,#D8CBAF 100%)}
+.janela{background:var(--janela);border-radius:12px 12px 0 0;box-shadow:0 30px 80px -30px rgba(5,6,7,.55);overflow:hidden;text-align:left;font-size:13px}
+.barra-j{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-bottom:1px solid var(--borda)}
+.barra-j i{width:11px;height:11px;border-radius:50%;background:var(--borda)}
+.barra-j span{margin-left:10px;color:var(--apoio);font-size:12px}
+.app{display:grid;grid-template-columns:190px 280px minmax(0,1fr);min-height:420px}
+.lateral{background:var(--cinza);border-right:1px solid var(--borda);padding:14px 10px}
+.lateral h4{margin:14px 8px 6px;font-size:11px;font-weight:500;color:var(--apoio)}
+.lateral h4:first-child{margin-top:0}
+.it{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:var(--texto)}
+.it.on{background:var(--azul-claro);color:var(--azul);font-weight:500}
+.it .ct{margin-left:auto;font-size:11px;color:var(--apoio)}
+.dot{width:8px;height:8px;border-radius:3px;flex:none}
+.lista{border-right:1px solid var(--borda)}
+.lista .cab{padding:12px 14px;font-size:11px;color:var(--apoio);border-bottom:1px solid var(--borda)}
+.mes{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:11px 14px;border-bottom:1px solid var(--borda)}
+.mes b{font-weight:600;color:var(--forte)}
+.mes .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--forte)}
+.mes .s{color:var(--apoio);font-size:12px}
+.mes.on{background:var(--azul);color:#fff}
+.mes.on b,.mes.on .v,.mes.on .s{color:#fff}
+.selo{justify-self:end;font-size:11px;border-radius:999px;padding:1px 8px;background:var(--azul-claro);color:var(--azul)}
+.mes.on .selo{background:rgba(255,255,255,.2);color:#fff}
+.det{padding:20px 24px 28px}
+.det .t{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.det .t b{font-size:16px;font-weight:600;color:var(--forte)}
+.det .t span{font-size:12px;color:var(--apoio)}
+.ln{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:12px 0;border-top:1px solid var(--borda)}
+.ln > span:first-child{color:var(--apoio);min-width:0}
+.ln .num{font-weight:600;color:var(--forte)}
+.ln small{display:block;font-size:11px;color:var(--apoio)}
+.ln.soma > span:first-child{color:var(--forte);font-weight:600}
+.ln.teto{position:relative;border-top-color:transparent}
+.ln.teto > span{color:var(--azul)!important}
+.ln.teto::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;border-radius:2px;background:var(--azul);transform-origin:left;animation:traca .9s var(--ease) .3s both}
+.ln.acima{background:repeating-linear-gradient(-45deg,var(--hach) 0 6px,transparent 6px 12px);border-radius:8px;padding-inline:12px;margin-inline:-12px;border-top:0;animation:surge .5s var(--ease) 1.1s both}
+.ln.acima > span:first-child{color:var(--forte);font-weight:500}
+.det .nota{margin-top:14px;font-size:11px;color:var(--apoio)}
+@keyframes traca{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes surge{from{opacity:.2}to{opacity:1}}
+
+/* Faixa de números (no lugar da faixa de logos do modelo) */
+.numeros{padding-block:44px 8px}
+.numeros p.cab{text-align:center;font-size:15px;color:var(--apoio)}
+.numeros .linha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:28px}
+.numeros .n{text-align:center}
+.numeros .n b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1;color:var(--titulo);font-variant-numeric:tabular-nums}
+.numeros .n span{display:block;margin-top:6px;font-size:13px;color:var(--apoio);max-width:24ch;margin-inline:auto}
+
+/* Seções */
+.secao{padding-block:clamp(72px,9vw,120px)}
+
+/* Painel com borda (modelo: "Email wasn't designed for teams") */
+.painel{border:1px solid var(--borda);border-radius:16px;overflow:hidden;text-align:center}
+.painel .topo-p{padding:clamp(40px,6vw,64px) 20px 0}
+.painel .lead{margin:14px auto 0}
+.cena{position:relative;height:340px;margin-top:20px}
+.cena svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,90%);height:auto}
+.cena svg text{font-family:var(--sans)}
+.etq{position:absolute;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;padding:6px 11px;border-radius:8px;white-space:nowrap}
+.etq svg{flex:none;position:static;transform:none;width:14px;height:14px}
+.etq.v{background:var(--t-vermelho);color:var(--t-vermelho-i)}
+.etq.a{background:var(--t-azul);color:var(--t-azul-i)}
+.etq.r{background:var(--t-roxo);color:var(--t-roxo-i)}
+.etq.m{background:var(--t-amarelo);color:var(--t-amarelo-i)}
+.e1{left:12%;top:22%}.e2{right:12%;top:14%}.e3{right:9%;bottom:24%}.e4{left:15%;bottom:16%}
+.rodape-p{background:var(--noite);color:var(--noite-txt);padding:18px 20px;font-size:clamp(15px,1.6vw,18px);font-weight:500}
+
+/* Grade de situações (modelo: cartões de recursos) */
+.cab-sec{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{min-width:0}
+.ico{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:var(--azul-claro);color:var(--azul);margin-bottom:16px}
+.card h3{font-size:17px;font-weight:600;color:var(--forte);letter-spacing:-.01em}
+.card p{margin-top:6px;color:var(--apoio);font-size:15px}
+.amostra{margin-top:20px;background:var(--cinza);border-radius:12px;padding:16px 18px 6px}
+.amostra .ln{font-size:14px;padding:10px 0}
+.amostra .ln:first-child{border-top:0}
+
+/* A regra: texto rola, gráfico fica preso */
+.regra{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}
+.passo{min-height:56vh;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.passo:first-child{min-height:auto;padding-bottom:14vh}
+.passo p{font-size:clamp(18px,1.9vw,21px);line-height:1.5;color:var(--apoio)}
+.passo p strong{color:var(--forte);font-weight:600}
+.grafico{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);border:1px solid var(--borda);border-radius:16px;padding:28px 24px 20px;background:var(--fundo)}
+.grafico svg{display:block;width:100%;height:auto}
+.grafico text{font-family:var(--sans);fill:var(--forte)}
+.grafico .t2{fill:var(--apoio)}
+.grafico .ta{fill:var(--azul);font-weight:600}
+.b1{fill:var(--t-azul)}.b2{fill:var(--t-roxo)}
+.g-teto{stroke:var(--azul)}
+.g-base{stroke:var(--borda)}
+.trans{transition:transform .55s var(--ease),opacity .55s var(--ease)}
+[data-estado="1"] .eb2,[data-estado="1"] .exc,[data-estado="2"] .exc{opacity:0}
+[data-estado="1"] .eb2{transform:translateY(-28px)}
+.estados{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.estados i{width:7px;height:7px;border-radius:50%;background:var(--borda);transition:background .3s var(--ease)}
+[data-estado="1"] .estados i:nth-child(1),[data-estado="2"] .estados i:nth-child(2),[data-estado="3"] .estados i:nth-child(3){background:var(--azul)}
+.grafico .nota{text-align:center;font-size:12px;color:var(--apoio);margin-top:10px}
+
+/* Quando vale / quando não vale */
+.duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.caixa{background:var(--cinza);border-radius:16px;padding:clamp(24px,3.4vw,36px);min-width:0}
+.caixa h3{font-size:19px;font-weight:600;color:var(--forte);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.caixa ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.caixa li{color:var(--apoio);padding-left:24px;position:relative}
+.caixa li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--apoio)}
+.caixa.sim li::before{background:var(--azul);box-shadow:none}
+.aviso-l{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--t-amarelo);color:var(--texto);border-radius:12px;padding:16px 18px;font-size:15px}
+.aviso-l svg{flex:none;color:var(--t-amarelo-i);margin-top:2px}
+.aviso-l strong{color:var(--forte)}
+
+/* Passos */
+.seq{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:p}
+.seq li{counter-increment:p;border-top:1px solid var(--borda);padding-top:20px;min-width:0}
+.seq li::before{content:counter(p);display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--azul-claro);color:var(--azul);font-weight:600;font-size:15px;margin-bottom:16px;font-variant-numeric:tabular-nums}
+.seq h3{font-size:17px;font-weight:600;color:var(--forte)}
+.seq p{margin-top:6px;color:var(--apoio);font-size:15px}
+
+/* Documentos e advogado */
+.docs{list-style:none;padding:0;margin:18px 0 0;display:grid}
+.docs li{padding:12px 0;border-top:1px solid var(--borda);color:var(--apoio)}
+.docs li:first-child{border-top:0;padding-top:0}
+.caixa .docs li{padding-left:0}
+.caixa .docs li::before{display:none}
+.adv{display:flex;gap:18px;align-items:center;margin-top:18px}
+.retrato{flex:none;width:88px;height:88px;object-fit:cover;border-radius:50%;background:var(--fundo);box-shadow:inset 0 0 0 1px var(--borda);display:grid;place-items:center;font-size:11px;color:var(--apoio);text-align:center;line-height:1.2}
+.adv strong{color:var(--forte)}
+.adv span{color:var(--apoio);font-size:14px}
+.caixa .bio{margin-top:16px;color:var(--apoio)}
+
+/* FAQ */
+.faq{margin-top:40px;border-top:1px solid var(--borda)}
+.faq details{border-bottom:1px solid var(--borda)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-size:17px;font-weight:500;color:var(--forte);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:4px;top:50%;width:12px;height:12px;margin-top:-6px;
+  background:linear-gradient(var(--apoio),var(--apoio)) center/12px 1.5px no-repeat,linear-gradient(var(--apoio),var(--apoio)) center/1.5px 12px no-repeat;transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--apoio);padding:0 40px 22px 0;max-width:62ch}
+
+/* Final escuro (modelo: "We live in our inboxes") */
+.final{background:var(--noite);color:var(--noite-txt);text-align:center;padding-block:clamp(88px,11vw,140px)}
+.final .selo-m{width:72px;height:72px;border-radius:16px;background:#FFFFFF;display:grid;place-items:center;margin:0 auto 32px}
+.final h2{color:#FFFFFF;font-size:clamp(36px,5.6vw,64px);line-height:1.06}
+.final .lead{color:#A3A9B2;margin:18px auto 0}
+.final .btn.sec{background:rgba(255,255,255,.08);color:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.final .btn.sec:hover{background:rgba(255,255,255,.14)}
+footer{background:var(--noite);color:#8A919B;font-size:13px;line-height:1.55}
+footer .in{max-width:var(--wide);margin:0 auto;padding-block:0 40px;display:grid;gap:12px}
+footer .linha{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+footer a{color:#C5CAD1}
+
+/* Triagem em tela cheia */
+.tri{position:fixed;inset:0;z-index:100;background:var(--fundo);overflow-y:auto;padding-top:env(safe-area-inset-top,0px)}
+.tri-topo{position:sticky;top:0;background:color-mix(in srgb,var(--fundo) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);z-index:2;border-bottom:1px solid var(--borda)}
+.tri-topo .in{max-width:720px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;color:var(--apoio)}
+.fechar{background:none;border:0;font:inherit;color:var(--azul);cursor:pointer;padding:6px 0;font-weight:500}
+.trilho{height:2px;background:var(--borda)}
+.trilho i{display:block;height:100%;background:var(--azul);transform-origin:left;transition:transform .35s var(--ease)}
+.tri-corpo{max-width:720px;margin:0 auto;padding-block:48px 96px}
+.tri-corpo h2{font-family:var(--serif);font-weight:400;color:var(--titulo);font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-.01em;text-wrap:balance}
+.tri-corpo .ajuda{color:var(--apoio);margin-top:12px;font-size:17px}
+.opcoes{display:grid;gap:10px;margin-top:32px}
+.opcao{position:relative;display:flex;align-items:center;gap:14px;min-height:60px;padding:14px 18px;border-radius:10px;cursor:pointer;
+  background:var(--fundo);box-shadow:inset 0 0 0 1px var(--borda);font-size:16px;font-weight:500;color:var(--forte);transition:box-shadow .15s var(--ease),background .15s var(--ease)}
+.opcao:hover{background:var(--cinza)}
+.opcao:has(input:checked){box-shadow:inset 0 0 0 2px var(--azul);background:var(--azul-claro)}
+.opcao input{position:absolute;opacity:0;pointer-events:none}
+.opcao .mk{flex:none;width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--apoio);display:grid;place-items:center}
+.opcao.quad .mk{border-radius:5px}
+.opcao input:checked + .mk{box-shadow:inset 0 0 0 6px var(--azul)}
+.opcao.quad input:checked + .mk{box-shadow:none;background:var(--azul)}
+.opcao.quad input:checked + .mk::after{content:"";width:9px;height:5px;border-left:2px solid var(--azul-txt);border-bottom:2px solid var(--azul-txt);transform:rotate(-45deg) translate(1px,-1px)}
+.opcao input:focus-visible + .mk{outline:2px solid var(--azul);outline-offset:3px}
+.tri-acoes{display:flex;justify-content:space-between;align-items:center;margin-top:36px;gap:12px}
+.erro{color:var(--erro);font-size:14px;margin-top:14px}
+.troca{animation:entra .26s var(--ease)}
+@keyframes entra{from{opacity:.001;transform:translateX(18px)}to{opacity:1;transform:none}}
+.resumo{margin-top:28px;background:var(--cinza);border-radius:12px;padding:6px 18px}
+.resumo .ln{font-size:15px}
+.resumo .ln:first-child{border-top:0}
+.resumo .ln span:last-child{text-align:right;font-weight:500;color:var(--forte)}
+.form{display:grid;gap:16px;margin-top:32px}
+.campo{display:grid;gap:8px;font-size:14px;font-weight:500;color:var(--forte)}
+.campo input{font:inherit;font-size:16px;padding:14px 16px;border-radius:8px;border:0;box-shadow:inset 0 0 0 1px var(--borda);background:var(--fundo);color:var(--forte)}
+.campo input:focus-visible{outline:none;box-shadow:inset 0 0 0 2px var(--azul)}
+.campo input[aria-invalid="true"]{box-shadow:inset 0 0 0 2px var(--erro)}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--apoio);cursor:pointer}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--azul)}
+.aviso{font-size:13px;color:var(--apoio);margin-top:28px}
+.cookies{position:fixed;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:90;max-width:560px;margin:0 auto;background:var(--fundo);color:var(--texto);
+  border:1px solid var(--borda);border-radius:12px;box-shadow:0 18px 50px -20px rgba(5,6,7,.45);padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px}
+.cookies[hidden]{display:none}
+.cookies p{flex:1 1 260px;color:var(--apoio)}
+.cookies p a{color:var(--azul);text-decoration:underline}
+.cookies .bts{display:flex;gap:8px}
+.cta-linha{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:44px;text-align:center}
+.cta-linha p{color:var(--apoio);font-size:15px;max-width:52ch}
+.cta-linha .bts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.cta-linha.esq{align-items:flex-start;text-align:left;margin-top:8px}
+.cta-linha.esq .bts{justify-content:flex-start}
+.painel .cta-linha{margin:0;padding:28px 20px 32px}
+.barra-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:color-mix(in srgb,var(--fundo) 92%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--borda);
+  transform:translateY(110%);transition:transform .3s var(--ease)}
+.barra-cta .btn{flex:1}
+.barra-cta.on{transform:none}
+@media (max-width:680px){.barra-cta{display:flex}footer .in{padding-bottom:96px}}
+.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.consent a{color:var(--azul);text-decoration:underline}
+.btn:disabled{opacity:.6;cursor:wait}
+
+/* Responsivo */
+@media (max-width:1000px){
+  .topo nav{display:none}
+  .app{grid-template-columns:240px minmax(0,1fr)}
+  .lateral{display:none}
+  .grade{grid-template-columns:1fr 1fr}
+  .grade .card:last-child{grid-column:1/-1}
+  .regra{grid-template-columns:1fr;gap:0}
+  .grafico{order:-1;top:calc(env(safe-area-inset-top,0px) + 68px);z-index:5;padding:14px 14px 10px;margin-bottom:8px}
+  .passo,.passo:first-child{min-height:auto;padding-block:36px}
+  .seq{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .topo .dir a.txt,.marca small{display:none}
+  .topo .in{gap:12px}
+  .app{grid-template-columns:1fr}
+  .lista{display:none}
+  .numeros .linha{grid-template-columns:1fr 1fr;row-gap:28px}
+  .cena{height:auto;padding:16px 16px 28px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .cena svg.fig{position:static;transform:none;width:100%;max-width:320px;margin:0 auto 12px;flex-basis:100%}
+  .etq{position:static}
+  .grade,.duas,.seq{grid-template-columns:1fr}
+  .grade .card:last-child{grid-column:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<a class="skip" href="#conteudo">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-marca" viewBox="0 0 24 24"><rect x="5" y="12" width="5.5" height="8" rx="1.4" fill="currentColor"/><rect x="13.5" y="7" width="5.5" height="13" rx="1.4" fill="currentColor" opacity=".45"/><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-conversa" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6a.5.5 0 0 1-.8-.4V16h-.5A.5.5 0 0 1 4 15.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 8.5h7M8.5 11.5h4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 16 16"><path d="M8 1.8 15 14H1L8 1.8Z" fill="currentColor"/><path d="M8 6.2v3.6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="11.8" r=".95" fill="#fff"/></symbol>
+  </defs>
+</svg>
+
+<div id="site">
+  <header class="topo g">
+    <div class="in">
+      <a class="marca" href="#conteudo" aria-label="Rafael Moura, attorney">
+        <svg width="24" height="24" style="color:var(--forte)"><use href="#i-marca"/></svg>
+        <b>rafael moura</b><small>attorney</small>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#regra">The rule</a>
+        <a href="#quando">When it applies</a>
+        <a href="#como">How it works</a>
+        <a href="#perguntas">FAQ</a>
+      </nav>
+      <div class="dir">
+        <a class="txt" href="#advogado">The attorney</a>
+        <button class="btn sm" type="button" data-abrir>Take the check</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Hero -->
+    <section class="hero g">
+      <h1 class="serif h-hero">Two jobs? Learn how your<br>INSS should be withheld</h1>
+      <p class="lead col">When you earn from more than one source, Brazil's INSS social security contribution has a monthly cap that applies to the total. If each employer withheld as if it were the only one, you may have paid above that cap.</p>
+      <div class="acoes">
+        <button class="btn" type="button" data-abrir>Take the quick check</button>
+        <a class="btn sec" href="#regra">Understand the rule</a>
+      </div>
+
+      <div class="vitrine">
+        <div class="parede">
+          <div class="janela" role="img" aria-label="Illustrative example: in September 2026, salaries of R$ 7,000.00 at the hospital and R$ 7,000.00 at the clinic add up to R$ 14,000.00. The 2026 INSS cap is R$ 8,475.55; the base above the cap is R$ 5,524.45.">
+            <div class="barra-j" aria-hidden="true"><i></i><i></i><i></i><span>INSS contributions · illustrative example</span></div>
+            <div class="app" aria-hidden="true">
+              <aside class="lateral">
+                <h4>Sources</h4>
+                <div class="it on"><span class="dot" style="background:var(--azul)"></span>All sources<span class="ct">2</span></div>
+                <div class="it"><span class="dot" style="background:var(--t-azul-i)"></span>Hospital<span class="ct">CLT</span></div>
+                <div class="it"><span class="dot" style="background:var(--t-roxo-i)"></span>Clinic<span class="ct">CLT</span></div>
+                <h4>Years</h4>
+                <div class="it">2026</div><div class="it">2025</div><div class="it">2024</div><div class="it">2023</div><div class="it">2022</div>
+              </aside>
+              <div class="lista">
+                <div class="cab">2026 pay periods</div>
+                <div class="mes on"><b>September</b><span class="v">14,000.00</span><span class="s">2 sources</span><span class="selo">above the cap</span></div>
+                <div class="mes"><b>August</b><span class="v">14,000.00</span><span class="s">2 sources</span><span class="selo">above the cap</span></div>
+                <div class="mes"><b>July</b><span class="v">12,300.00</span><span class="s">2 sources</span><span class="selo">above the cap</span></div>
+                <div class="mes"><b>June</b><span class="v">8,100.00</span><span class="s">2 sources</span><span class="s" style="justify-self:end">within the cap</span></div>
+                <div class="mes"><b>May</b><span class="v">7,000.00</span><span class="s">1 source</span><span class="s" style="justify-self:end">within the cap</span></div>
+              </div>
+              <div class="det">
+                <div class="t"><b>September 2026</b><span>Monthly summary</span></div>
+                <div class="ln"><span>Hospital<small>contribution salary · employee</small></span><span class="num">R$&nbsp;7,000.00</span></div>
+                <div class="ln"><span>Clinic<small>contribution salary · employee</small></span><span class="num">R$&nbsp;7,000.00</span></div>
+                <div class="ln soma"><span>Monthly total</span><span class="num">R$&nbsp;14,000.00</span></div>
+                <div class="ln teto"><span>2026 INSS cap</span><span class="num">R$&nbsp;8,475.55</span></div>
+                <div class="ln acima"><span>Base above the cap</span><span class="num">R$&nbsp;5,524.45</span></div>
+                <p class="nota">Example figures. They do not indicate any amount owed to you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Números -->
+    <section class="numeros g" aria-labelledby="t-num">
+      <div class="mid">
+        <p class="cab" id="t-num">The rule in four numbers</p>
+        <div class="linha">
+          <div class="n"><b>R$&nbsp;8,475.55</b><span>monthly cap in 2026, for all sources combined</span></div>
+          <div class="n"><b>1 cap</b><span>per person, not per job</span></div>
+          <div class="n"><b>5 years</b><span>look-back period, counted from each deduction</span></div>
+          <div class="n"><b>Selic</b><span>interest on what was withheld above the cap</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Painel do problema -->
+    <section class="secao g" aria-labelledby="t-prob" style="padding-bottom:0">
+      <div class="wide painel">
+        <div class="topo-p">
+          <h2 id="t-prob" class="serif h-sec">Each employer withholds as if it were the only one</h2>
+          <p class="lead">One employer doesn't know what the other pays. If you didn't report your other jobs, nobody adds up the deductions.</p>
+        </div>
+        <div class="cena">
+          <svg class="fig" viewBox="0 0 420 260" aria-hidden="true">
+            <line x1="40" y1="236" x2="380" y2="236" stroke="var(--borda)" stroke-width="1"/>
+            <rect x="160" y="146" width="100" height="90" rx="10" fill="var(--t-azul)"/>
+            <rect x="160" y="52" width="100" height="90" rx="10" fill="var(--t-roxo)"/>
+            <rect x="160" y="52" width="100" height="64" rx="10" fill="url(#hach2)"/>
+            <defs><pattern id="hach2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="10" fill="var(--azul)" opacity=".28"/></pattern></defs>
+            <line x1="40" y1="116" x2="380" y2="116" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="40" y="106" font-size="13" font-weight="600" fill="var(--azul)">INSS cap</text>
+            <text x="210" y="196" font-size="13" text-anchor="middle" fill="var(--forte)">Source 1</text>
+            <text x="210" y="134" font-size="13" text-anchor="middle" fill="var(--forte)">Source 2</text>
+          </svg>
+          <span class="etq v e1"><svg><use href="#i-alerta"/></svg>Hospital withholds alone</span>
+          <span class="etq a e2"><svg><use href="#i-alerta"/></svg>Clinic withholds alone</span>
+          <span class="etq r e3"><svg><use href="#i-alerta"/></svg>Freelance shifts withhold 11%</span>
+          <span class="etq m e4"><svg><use href="#i-alerta"/></svg>Nobody checks the total</span>
+        </div>
+
+        <div class="cta-linha"><p>If this happened to you, it can be checked. Talk to the attorney or take the 6-question check.</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+        <p class="rodape-p">The cap applies to the person, not to each job. Anything above it does not raise your pension.</p>
+      </div>
+    </section>
+
+    <!-- Situações -->
+    <section class="secao g" aria-labelledby="t-fontes">
+      <div class="wide">
+        <div class="cab-sec centro">
+          <h2 id="t-fontes" class="serif h-sec">Do you earn from more than one source?</h2>
+          <p class="lead">If any of these happened in the last five years, the rule is worth understanding.</p>
+        </div>
+        <div class="grade">
+          <article class="card">
+            <div class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+            <h3>Two salaried jobs</h3>
+            <p>For example, a hospital and a clinic.</p>
+            <div class="amostra" aria-hidden="true">
+              <div class="ln"><span>Hospital<small>employee</small></span><span class="num">deduction 1</span></div>
+              <div class="ln"><span>Clinic<small>employee</small></span><span class="num">deduction 2</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <h3>A job plus freelance shifts</h3>
+            <p>A salaried job plus shifts or services paid as a freelancer.</p>
+            <div class="amostra" aria-hidden="true">
+              <div class="ln"><span>Job<small>employee</small></span><span class="num">deduction 1</span></div>
+              <div class="ln"><span>Shifts<small>freelance</small></span><span class="num">11% withheld</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+            <h3>A job and owner's pay</h3>
+            <p>Employed and also a partner, drawing owner's pay from your own company.</p>
+            <div class="amostra" aria-hidden="true">
+              <div class="ln"><span>Job<small>employee</small></span><span class="num">deduction 1</span></div>
+              <div class="ln"><span>Own company<small>owner's pay</small></span><span class="num">11%</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="cta-linha"><p>Do any of these sound like you?</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+      </div>
+    </section>
+
+    <!-- A regra -->
+    <section id="regra" class="secao g" style="padding-top:0" aria-labelledby="t-regra">
+      <div class="mid regra">
+        <div>
+          <div class="passo" data-passo="1">
+            <h2 id="t-regra" class="serif h-sec">How the rule works</h2>
+            <p>INSS has a cap: in 2026, employee contributions apply to at most <span class="num">R$&nbsp;8,475.55</span> a month. That limit covers the <strong>total</strong> you earn in the month, not each job separately.</p>
+          </div>
+          <div class="passo" data-passo="2">
+            <p><strong>The problem: one employer doesn't know what the other pays.</strong> If you didn't report your other jobs, each withholds as if it were the only one. The combined deductions can exceed the cap, and the excess does not raise your pension.</p>
+          </div>
+          <div class="passo" data-passo="3">
+            <p><strong>The law allows a refund</strong> of what was withheld above the cap in the last five years, with interest at the Selic rate.</p>
+            <div class="cta-linha esq"><p>Want to know if this applies to you?</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+          </div>
+        </div>
+        <div class="grafico" id="grafico" data-estado="1" aria-hidden="true">
+          <svg viewBox="0 0 420 330">
+            <line class="g-base" x1="20" y1="290" x2="400" y2="290" stroke-width="1"/>
+            <g class="trans"><rect class="b1" x="150" y="190" width="120" height="100" rx="10"/>
+              <text x="210" y="245" text-anchor="middle" font-size="14">Job 1</text></g>
+            <g class="trans eb2"><rect class="b2" x="150" y="86" width="120" height="100" rx="10"/>
+              <text x="210" y="141" text-anchor="middle" font-size="14">Job 2</text></g>
+            <defs><pattern id="hach" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="12" style="fill:var(--azul)" opacity=".3"/></pattern></defs>
+            <g class="trans exc"><rect x="150" y="86" width="120" height="84" rx="10" fill="url(#hach)"/>
+              <text x="284" y="112" font-size="14" font-weight="600">Base above</text>
+              <text x="284" y="130" font-size="14" font-weight="600">the cap</text>
+              <text x="284" y="150" font-size="12" class="t2">does not raise</text>
+              <text x="284" y="165" font-size="12" class="t2">your pension</text></g>
+            <line class="g-teto" x1="20" y1="170" x2="400" y2="170" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="20" y="142" font-size="14" class="ta">INSS cap</text><text x="20" y="160" font-size="14" class="ta">R$ 8,475.55</text>
+            <text x="20" y="314" font-size="12" class="t2">Total monthly earnings</text>
+          </svg>
+          <div class="estados"><i></i><i></i><i></i></div>
+          <p class="nota">Illustrative example</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quando vale -->
+    <section id="quando" class="secao g" style="padding-top:0" aria-labelledby="t-quando">
+      <div class="mid">
+        <div class="cab-sec centro">
+          <h2 id="t-quando" class="serif h-sec">When a review is worth it. And when it isn't.</h2>
+        </div>
+        <div class="duas">
+          <div class="caixa sim">
+            <h3>Usually worth it</h3>
+            <ul><li>When your combined INSS earnings were well above the cap for several months.</li></ul>
+          </div>
+          <div class="caixa">
+            <h3>Usually not worth it</h3>
+            <ul>
+              <li>When your combined income is close to or below the cap.</li>
+              <li>When one job is a civil service post under its own pension scheme, which doesn't add to INSS.</li>
+              <li>When you are paid only through a company, with no personal deductions.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="aviso-l"><svg width="16" height="16"><use href="#i-alerta"/></svg><span><strong>An important note:</strong> with some moderate income combinations, separate withholding may have been lower than required. A careful review considers that before any claim.</span></p>
+        <div class="cta-linha"><p>The first conversation exists to tell exactly that: when a review is worth it and when it isn't.</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section id="como" class="secao g" style="padding-top:0" aria-labelledby="t-como">
+      <div class="wide">
+        <div class="cab-sec centro">
+          <h2 id="t-como" class="serif h-sec">How the review works</h2>
+        </div>
+        <ol class="seq">
+          <li><h3>Quick check</h3><p>Answer 6 questions and see whether your situation usually justifies a review.</p></li>
+          <li><h3>Talk to the attorney</h3><p>If you like, leave your contact and the attorney replies by WhatsApp or email.</p></li>
+          <li><h3>CNIS review</h3><p>Using your CNIS contribution statement, the attorney checks month by month for deductions above the cap.</p></li>
+          <li><h3>Claim</h3><p>If there is an excess, the attorney explains the options and the terms of engagement.</p></li>
+        </ol>
+        <div class="cta-linha"><p>Prefer to skip ahead? The attorney answers on WhatsApp.</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+      </div>
+    </section>
+
+    <!-- Documentos e advogado -->
+    <section id="advogado" class="secao g" style="padding-top:0" aria-label="Documents and attorney">
+      <div class="mid duas">
+        <article class="caixa">
+          <h3>What you'll need</h3>
+          <ul class="docs">
+            <li>Your CNIS statement, downloadable from the Meu INSS portal.</li>
+            <li>Pay slips or freelance receipts from periods with more than one source, if you have them.</li>
+            <li>Access to your gov.br account.</li>
+          </ul>
+        </article>
+        <article class="caixa">
+          <h3>About the attorney</h3>
+          <div class="adv">
+            <div class="retrato" role="img" aria-label="Retrato" style="font:600 26px/1 var(--serif);color:var(--apoio)">RM</div>
+            <div><strong>Rafael Moura</strong><br><span>Bar no. 000.000 · online consultations</span></div>
+          </div>
+          <p class="bio">Law graduate with postgraduate degrees in Corporate Legal Advisory and Social Security Law. Over 20 years in practice, serving clients across Brazil online.</p>
+        </article>
+      </div>
+        <div class="cta-linha mid"><p>Online service, with an individual review of your case.</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a><button class="btn sec" type="button" data-abrir>Take the check</button></div></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="perguntas" class="secao g" style="padding-top:0" aria-labelledby="t-faq">
+      <div class="col">
+        <h2 id="t-faq" class="serif h-sec centro">Frequently asked questions</h2>
+        <div class="faq">
+          <details><summary>Is this the same as the unauthorized deductions from retirees?</summary><p>No. That case involves association fees taken from INSS benefits. This is about contributions withheld from working people above the cap.</p></details>
+          <details><summary>Does the overpayment increase my pension?</summary><p>No. Benefits only count up to the cap. That is why the excess can be refunded.</p></details>
+          <details><summary>How far back can I claim?</summary><p>The last five years, counted from each deduction.</p></details>
+          <details><summary>I'm a civil servant and also have a private-sector job. Do I qualify?</summary><p>As a rule, no, because the civil service scheme doesn't add to INSS. The quick check takes this into account.</p></details>
+          <details><summary>How do I stop this from happening?</summary><p>By telling each employer how much you earn and how much has already been withheld elsewhere. The attorney can show you how.</p></details>
+        </div>
+        <div class="cta-linha"><p>Have a question that isn't here? Ask the attorney directly.</p><div class="bts"><a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a></div></div>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="final g" aria-labelledby="t-final">
+      <div class="mid">
+        <div class="selo-m" aria-hidden="true"><svg width="36" height="36" style="color:#050607"><use href="#i-marca"/></svg></div>
+        <h2 id="t-final" class="serif">Want to know if your case<br>deserves a review?</h2>
+        <p class="lead">It takes about 2 minutes. You only leave your contact if you want to.</p>
+        <div class="acoes">
+          <button class="btn" type="button" data-abrir>Take the quick check</button>
+          <a class="btn sec" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="g">
+    <div class="in">
+      <p>Informational content; it does not replace an individual review. Figures on this page are illustrative and do not indicate any amount owed.</p>
+      <div class="linha">
+        <span>Rafael Moura · OAB/XX nº 000.000 · 100 Example St., Downtown · contato@exemplo.com · (00) 90000-0000</span>
+        <a href="#perguntas">Privacy policy</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="barra-cta" id="barra-cta" aria-label="Contact shortcuts">
+  <a class="btn" href="#advogado" data-whats><svg width="18" height="18" aria-hidden="true"><use href="#i-conversa"/></svg>WhatsApp</a>
+  <button class="btn sec" type="button" data-abrir>Check</button>
+</div>
+
+<!-- Aviso de cookies: só aparece se a medição (GTM) estiver configurada -->
+<div class="cookies" id="cookies" role="region" aria-label="Cookie notice" hidden>
+  <p>We use measurement cookies to learn which ads bring visits. It's your choice. <a href="#perguntas">Learn more</a></p>
+  <div class="bts"><button class="btn sec sm" type="button" id="ck-nao">Decline</button><button class="btn sm" type="button" id="ck-sim">Accept</button></div>
+</div>
+
+<!-- Triagem -->
+<div class="tri" id="tri" role="dialog" aria-modal="true" aria-labelledby="tq" hidden>
+  <div class="tri-topo g">
+    <div class="in"><span id="progTxt" class="num">Question 1 of 6</span><button class="fechar" type="button" id="fechar">Close</button></div>
+  </div>
+  <div class="trilho"><i id="barra" style="transform:scaleX(.1667)"></i></div>
+  <div class="tri-corpo g" id="palco" aria-live="polite"></div>
+</div>
+
+<script>
+(function(){
+  /* Integração: cole aqui a URL do App da Web do Google Apps Script (termina em /exec).
+     Vazia = modo prévia (nada é enviado). */
+  var APPS_SCRIPT_URL='';
+  /* Medição: cole o ID do contêiner do Google Tag Manager (GTM-XXXXXXX). Vazio = sem medição e sem aviso de cookies. */
+  var GTM_ID='';
+
+  /* Consent Mode v2: tudo negado por padrão; libera só se a pessoa aceitar */
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+  function ler(k){try{return localStorage.getItem(k)}catch(_){return null}}
+  function grava(k,v){try{localStorage.setItem(k,v)}catch(_){}}
+  function aplicaConsent(sim){var v=sim?'granted':'denied';
+    gtag('consent','update',{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v});}
+  if(GTM_ID){
+    var escolha=ler('consent_medicao');
+    if(escolha)aplicaConsent(escolha==='sim');
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_ID);
+    var ck=document.getElementById('cookies');
+    if(!escolha&&ck){ck.hidden=false;
+      document.getElementById('ck-sim').onclick=function(){grava('consent_medicao','sim');aplicaConsent(true);ck.hidden=true;};
+      document.getElementById('ck-nao').onclick=function(){grava('consent_medicao','nao');aplicaConsent(false);ck.hidden=true;};}
+  }
+
+  /* Guarda UTMs e gclid da primeira página vista nesta sessão */
+  var CHAVES=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'];
+  var ORIGEM={};
+  try{
+    var salvo=JSON.parse(sessionStorage.getItem('origem_lead')||'null');
+    if(salvo){ORIGEM=salvo;}
+    else{var qs=new URLSearchParams(location.search);CHAVES.forEach(function(k){var v=qs.get(k);if(v)ORIGEM[k]=v.slice(0,200)});
+      ORIGEM.referrer=document.referrer||'';sessionStorage.setItem('origem_lead',JSON.stringify(ORIGEM));}
+  }catch(_){var qs2=new URLSearchParams(location.search);CHAVES.forEach(function(k){var v=qs2.get(k);if(v)ORIGEM[k]=v});ORIGEM.referrer=document.referrer||'';}
+
+  /* Clique no WhatsApp: evento para o Tag Manager */
+  document.querySelectorAll('[data-whats]').forEach(function(a){a.addEventListener('click',function(){
+    try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_clique',local:a.closest('section')?(a.closest('section').id||a.closest('section').className):'barra'});}catch(_){}});});
+  /* Barra fixa no celular: aparece depois do hero e some no final da página */
+  (function(){var barra=document.getElementById('barra-cta');if(!barra||!('IntersectionObserver' in window))return;
+    var alvos=[document.querySelector('.hero .acoes'),document.querySelector('.final')],vis={};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[alvos.indexOf(e.target)]=e.isIntersecting});
+      var ck=document.getElementById('cookies');barra.classList.toggle('on',!vis[0]&&!vis[1]&&(!ck||ck.hidden));});
+    alvos.forEach(function(a){if(a)io.observe(a)});})();
+  function mascara(v){var d=v.replace(/\D/g,'').slice(0.11);
+    if(d.length<3)return d.length?'('+d:'';
+    var r='('+d.slice(0,2)+') ';var resto=d.slice(2);
+    if(resto.length>(d.length===11?5:4))return r+resto.slice(0,resto.length-4)+'-'+resto.slice(-4);
+    return r+resto;}
+  var graf=document.getElementById('grafico');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)graf.dataset.estado=e.target.dataset.passo})},{rootMargin:'-45% 0px -45% 0px'});
+    document.querySelectorAll('[data-passo]').forEach(function(el){io.observe(el)});
+  }
+
+  var P=[
+    {id:'q1',t:'In the last 5 years, did you earn from more than one source in the same month?',tipo:'radio',o:[['1','Just one'],['2','Two'],['3','Three or more']]},
+    {id:'q2',t:'How are you paid by each source?',ajuda:'Select all that apply.',tipo:'check',o:[['clt','Salaried employee'],['rpa','Freelance shifts or services'],['pro','Owner pay from my company'],['est','Civil servant'],['pj','Only through a company']]},
+    {id:'q3',t:'Adding salary, freelance and owner pay, how much do you usually earn per month before deductions?',ajuda:'Leave out civil service and company income.',tipo:'radio',o:[['a','Up to R$ 10k'],['b','R$ 10k to 15k'],['c','R$ 15k to 20k'],['d','Over R$ 20k']]},
+    {id:'q4',t:'Within the last 5 years, how long did you have more than one source?',tipo:'radio',o:[['a','Less than 1 year'],['b','1 to 3 years'],['c','More than 3 years']]},
+    {id:'q5',t:'Did you tell each source how much you earned and what was withheld by the others?',tipo:'radio',o:[['sim','Yes, all of them'],['nao','No'],['ns','Not sure']]},
+    {id:'q6',t:'Have you ever claimed a refund of this INSS?',tipo:'radio',o:[['nao','No'],['neg','Yes, denied or still pending'],['rec','Yes, and I was paid']]}
+  ];
+  var MSG={
+    1:['Usually does not justify a review','Based on your answers, your situation usually doesn\'t lead to significant deductions above the cap. See how the rule works and how to avoid problems going forward.'],
+    2:['May justify a review','Your situation may or may not have led to deductions above the cap. Only a month-by-month CNIS check can tell. If you like, leave your contact to talk to the attorney.'],
+    3:['Usually justifies a review','Situations like yours usually justify an individual review. That doesn\'t mean money is owed; it depends on the monthly history. If you like, leave your contact to talk to the attorney.']
+  };
+  var tri=document.getElementById('tri'),palco=document.getElementById('palco'),R={},i=0,origem=null;
+  function prog(f,t){document.getElementById('barra').style.transform='scaleX('+f+')';document.getElementById('progTxt').textContent=t;}
+  function abrir(e){origem=e.currentTarget;R={};i=0;tri.hidden=false;document.body.style.overflow='hidden';render();}
+  function fechar(){tri.hidden=true;document.body.style.overflow='';if(origem)origem.focus();}
+  document.querySelectorAll('[data-abrir]').forEach(function(b){b.addEventListener('click',abrir)});
+  document.getElementById('fechar').addEventListener('click',fechar);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!tri.hidden)fechar();});
+
+  function render(){
+    var q=P[i],sel=R[q.id]||(q.tipo==='check'?[]:null);prog((i+1)/6,'Question '+(i+1)+' of 6');
+    var h='<div class="troca"><h2 id="tq">'+q.t+'</h2>'+(q.ajuda?'<p class="ajuda">'+q.ajuda+'</p>':'')+'<div class="opcoes" role="'+(q.tipo==='radio'?'radiogroup':'group')+'" aria-labelledby="tq">';
+    q.o.forEach(function(o,k){var on=q.tipo==='check'?sel.indexOf(o[0])>-1:sel===o[0];var id=q.id+'_'+k;
+      h+='<label class="opcao'+(q.tipo==='check'?' quad':'')+'" for="'+id+'"><input id="'+id+'" type="'+(q.tipo==='radio'?'radio':'checkbox')+'" name="'+q.id+'" value="'+o[0]+'"'+(on?' checked':'')+'><span class="mk"></span><span>'+o[1]+'</span></label>';});
+    h+='</div><p class="erro" id="err" hidden>Choose an option to continue.</p><div class="tri-acoes"><button class="btn sec" type="button" id="voltar"'+(i===0?' hidden':'')+'>Back</button><span></span><button class="btn" type="button" id="cont">'+(i===5?'See result':'Continue')+'</button></div></div>';
+    palco.innerHTML=h;tri.scrollTop=0;
+    var first=palco.querySelector('input:checked')||palco.querySelector('input');if(first)first.focus({preventScroll:true});
+    document.getElementById('voltar').onclick=function(){salva();i--;render();};
+    document.getElementById('cont').onclick=function(){salva();var v=R[q.id];
+      if(!v||(Array.isArray(v)&&!v.length)){document.getElementById('err').hidden=false;palco.querySelector('input').focus();return;}
+      if(i<5){i++;render();}else resultado();};
+    palco.querySelectorAll('input').forEach(function(inp){inp.addEventListener('change',function(){document.getElementById('err').hidden=true;})});
+  }
+  function salva(){var q=P[i];var v=[].slice.call(palco.querySelectorAll('input:checked')).map(function(x){return x.value});R[q.id]=q.tipo==='check'?v:(v[0]||null);}
+  function calc(){
+    var n=+R.q1,t=R.q2||[],rg=t.filter(function(x){return x==='clt'||x==='rpa'||x==='pro'}).length,non=t.filter(function(x){return x==='est'||x==='pj'}).length;
+    var nInss=rg?Math.max(1,n-non):0;
+    if(n===1||nInss<2||R.q3==='a'||R.q6==='rec')return 1;
+    if(R.q6==='neg')return 3;
+    if((R.q3==='c'||R.q3==='d')&&(R.q4==='b'||R.q4==='c')&&(R.q5==='nao'||R.q5==='ns'))return 3;
+    return 2;
+  }
+  function rot(id,v){var q=P.filter(function(p){return p.id===id})[0];var f=function(x){return q.o.filter(function(o){return o[0]===x})[0][1]};return Array.isArray(v)?v.map(f).join(', '):f(v);}
+  function resultado(){
+    var r=calc();prog(1,'Result');
+    var h='<div class="troca"><h2 id="tq">'+MSG[r][0]+'</h2><p class="ajuda">'+MSG[r][1]+'</p><div class="resumo">';
+    [['q1','Sources in the same month'],['q2','Type of each source'],['q3','Combined income'],['q4','Time with multiple sources'],['q5','Told the sources'],['q6','Previous claim']].forEach(function(x){h+='<div class="ln"><span>'+x[1]+'</span><span>'+rot(x[0],R[x[0]])+'</span></div>'});
+    h+='</div>';
+    if(r===1){h+='<div class="tri-acoes"><span></span><button class="btn" type="button" id="ler">Read how the rule works</button></div>';}
+    else{h+='<form class="form" id="form" novalidate>'+
+      '<label class="campo" for="f-nome">Name<input id="f-nome" name="nome" type="text" autocomplete="name" required></label>'+
+      '<label class="campo" for="f-whats">WhatsApp<input id="f-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 90000-0000" required></label>'+
+      '<label class="campo" for="f-email">Email (optional)<input id="f-email" name="email" type="email" autocomplete="email" spellcheck="false"></label>'+
+      '<label class="consent" for="f-ok"><input id="f-ok" name="consentimento" type="checkbox" required><span>I authorize the office to contact me by WhatsApp and email about this request and agree to the <a href="#perguntas">Privacy Policy</a>.</span></label>'+
+      '<div class="hp" aria-hidden="true"><label for="f-emp">Company</label><input id="f-emp" name="empresa" type="text" tabindex="-1" autocomplete="off"></div>'+
+      '<p class="erro" id="ferr" hidden></p><div class="tri-acoes" style="margin-top:8px"><span></span><button class="btn" type="submit">Send to the attorney</button></div></form>';}
+    h+='<p class="aviso">This check is informational and does not replace an individual review. No amount is promised.</p></div>';
+    palco.innerHTML=h;tri.scrollTop=0;document.getElementById('tq').setAttribute('tabindex','-1');document.getElementById('tq').focus();
+    var ler=document.getElementById('ler');if(ler)ler.onclick=function(){fechar();document.getElementById('regra').scrollIntoView();};
+    var f=document.getElementById('form');
+    if(f){
+      f.whatsapp.addEventListener('input',function(){this.value=mascara(this.value);});
+      f.addEventListener('submit',function(e){e.preventDefault();
+        var err=document.getElementById('ferr'),btn=f.querySelector('button[type=submit]');
+        var dig=f.whatsapp.value.replace(/\D/g,'');
+        var faltas=[];
+        var nomeRuim=!f.nome.value.trim();f.nome.setAttribute('aria-invalid',nomeRuim);if(nomeRuim)faltas.push(f.nome);
+        var zapRuim=dig.length<10;f.whatsapp.setAttribute('aria-invalid',zapRuim);if(zapRuim)faltas.push(f.whatsapp);
+        if(!f.consentimento.checked)faltas.push(f.consentimento);
+        if(faltas.length){err.textContent=zapRuim&&f.whatsapp.value.trim()?'Check the WhatsApp number: include area code and number.':'Fill in name, WhatsApp and the contact authorization to send.';err.hidden=false;faltas[0].focus();return;}
+        err.hidden=true;
+
+        var payload={nome:f.nome.value.trim(),whatsapp:dig,email:f.email.value.trim(),consentimento:true,resultado:r,
+          pagina:location.href,referrer:ORIGEM.referrer||'',user_agent:navigator.userAgent};
+        P.forEach(function(q){payload[q.id]=rot(q.id,R[q.id])});
+        CHAVES.forEach(function(k){payload[k]=ORIGEM[k]||''});
+
+        function sucesso(){
+          prog(1,'Sent');
+          palco.innerHTML='<div class="troca"><h2 id="tq" tabindex="-1">Request sent</h2><p class="ajuda">The attorney will reply on the WhatsApp number you gave.</p><div class="tri-acoes"><span></span><button class="btn" type="button" id="fim">Back to the page</button></div></div>';
+          document.getElementById('tq').focus();document.getElementById('fim').onclick=fechar;
+          try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'lead_enviado',resultado:r});}catch(_){}
+        }
+        if(f.empresa.value){sucesso();return;}            /* honeypot: robô */
+        if(!APPS_SCRIPT_URL){sucesso();palco.querySelector('.ajuda').textContent+=' (Demo mode: no data was sent.)';return;}
+
+        btn.disabled=true;btn.textContent='Sending…';
+        fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)})
+          .then(function(res){return res.json().catch(function(){return {ok:res.ok}})})
+          .then(function(j){if(j&&j.ok)sucesso();else throw new Error('recusado');})
+          .catch(function(){btn.disabled=false;btn.textContent='Send to the attorney';
+            err.textContent='Couldn\'t send right now. Please try again shortly.';err.hidden=false;btn.focus();});
+      });
+    }
+  }
+})();
+</script>
+
+</body></html>

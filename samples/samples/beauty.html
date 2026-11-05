@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dr. Helena Duarte · Aesthetic Medicine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Clínica editorial: verde-musgo profundo, cobre e linho; arco como assinatura visual. Tema único, claro com bandas escuras. */
+:root{
+  --musgo:#0E3324; --musgo-2:#14432F; --cobre:#B9774F; --cobre-claro:#D9A27E;
+  --linho:#E3DACB; --papel:#F8F6F2; --tinta:#1D1D1B; --cinza:#6E6A63; --carvao:#1C1C1A;
+  --serif:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --sans:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+.g{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.w{max-width:1160px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cobre);font-weight:500}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 24px;font:500 14px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-claro{background:var(--papel);color:var(--musgo)}
+.btn-musgo{background:var(--musgo);color:var(--papel)}
+.btn-linha{border-color:rgba(29,29,27,.25);color:var(--tinta)}
+.btn svg{width:16px;height:16px}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+
+/* Topo */
+.topo{position:sticky;top:0;z-index:50;background:rgba(14,51,36,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s}
+.topo.claro{background:rgba(248,246,242,.94);border-bottom:1px solid rgba(29,29,27,.08)}
+.topo .in{height:64px;display:flex;align-items:center;gap:24px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca .mono{width:34px;height:34px;flex:none}
+.marca b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--cobre-claro);line-height:1}
+.marca small{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,246,242,.7);margin-top:4px}
+.topo.claro .marca b{color:var(--cobre)}.topo.claro .marca small{color:var(--cinza)}
+.topo nav{margin-left:auto;display:flex;gap:28px;font-size:13.5px}
+.topo nav a{text-decoration:none;color:rgba(248,246,242,.85)}
+.topo.claro nav a{color:var(--tinta)}
+.topo .btn{padding:10px 18px;font-size:13px}
+.topo.claro .btn{background:var(--musgo);color:var(--papel)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 50% 100%,#1B5039 0%,var(--musgo) 60%);color:var(--papel);text-align:center;padding-block:72px 96px}
+.hero .arcos{position:absolute;left:50%;bottom:-40px;transform:translateX(-50%);width:min(560px,92%);opacity:.18;pointer-events:none}
+.hero .nome{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.4vw,40px);color:var(--cobre-claro)}
+.hero .eyebrow{color:rgba(248,246,242,.6);margin-top:14px;display:block}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(76px,13vw,168px);line-height:.92;margin-top:28px;letter-spacing:-.02em}
+.hero h1 em{display:block}
+.hero p.sub{max-width:44ch;margin:34px auto 0;font-size:17px;color:rgba(248,246,242,.82)}
+.hero .acoes{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:34px;position:relative}
+.hero .link{color:rgba(248,246,242,.85);font-size:14px;text-decoration:none}
+.hero .link:hover{color:#fff}
+
+/* Filosofia */
+.filo{background:var(--linho);padding-block:clamp(64px,8vw,104px)}
+.filo .w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,80px);align-items:center}
+.filo h2{font-size:clamp(40px,5vw,62px);line-height:1.05;margin-top:18px}
+.filo h2 em{color:var(--cobre)}
+.filo p.txt{margin-top:26px;color:#4D4A44;max-width:46ch}
+.quadro{background:var(--musgo);border-radius:20px;aspect-ratio:1.1;max-width:100%;position:relative;display:grid;place-items:center;overflow:hidden;color:var(--papel)}
+.quadro svg.arco{position:absolute;inset:auto;width:58%;opacity:.35}
+.quadro .selo{position:relative;text-align:center}
+.quadro .selo b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,30px);letter-spacing:.06em}
+.quadro .selo small{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--cobre-claro);margin-top:6px}
+.quadro blockquote{position:absolute;left:24px;right:24px;bottom:22px;margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.7vw,21px)}
+
+/* Tratamentos */
+.trat{padding-block:clamp(64px,8vw,104px)}
+.trat .cab{text-align:center;margin-bottom:44px}
+.trat .cab h2{font-size:clamp(40px,5vw,60px);margin-top:12px}
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{border-radius:18px;padding:30px 28px;min-height:250px;display:flex;flex-direction:column;position:relative;overflow:hidden;min-width:0}
+.card.big{grid-column:span 2}
+.card.full{grid-column:1/-1;min-height:200px}
+.card .tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+.card h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,34px);line-height:1.08;margin-top:14px}
+.card p{font-size:14px;margin-top:14px;max-width:40ch;opacity:.85}
+.card .mais{margin-top:auto;padding-top:22px;font-size:13px;font-weight:500;text-decoration:none}
+.c-musgo{background:var(--musgo);color:var(--papel)}
+.c-cobre{background:var(--cobre);color:#FFF8F1}
+.c-linho{background:var(--linho);color:var(--tinta)}
+.c-papel{background:#EFEBE4;color:var(--tinta)}
+.card .anel{position:absolute;right:-60px;top:-60px;width:220px;height:300px;border:1px solid currentColor;border-radius:110px 110px 0 0;opacity:.14}
+
+/* Sobre */
+.sobre{background:var(--carvao);color:var(--papel);padding-block:clamp(64px,8vw,104px)}
+.sobre .w{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.retrato{border-radius:20px;aspect-ratio:.85;max-width:100%;background:linear-gradient(160deg,var(--musgo-2),var(--musgo));position:relative;display:grid;place-items:center;overflow:hidden}
+.retrato .ini{font-family:var(--serif);font-style:italic;font-size:clamp(90px,12vw,150px);color:rgba(248,246,242,.12)}
+.retrato .status{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;font-size:13px;display:flex;gap:10px;align-items:center}
+.retrato .status i{width:8px;height:8px;border-radius:50%;background:#5BC27B;flex:none}
+.sobre h2{font-size:clamp(40px,5vw,60px);line-height:1.04;margin-top:16px}
+.sobre h2 em{color:var(--cobre-claro)}
+.sobre p.txt{margin-top:22px;color:rgba(248,246,242,.75);max-width:48ch}
+.creds{display:grid;gap:10px;margin-top:28px}
+.cred{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:13px 16px}
+.cred .ic{width:30px;height:30px;border-radius:8px;background:rgba(185,119,79,.18);color:var(--cobre-claro);display:grid;place-items:center;flex:none;font-size:14px}
+.cred b{display:block;font-size:14px;font-weight:500}
+.cred small{display:block;font-size:12px;color:rgba(248,246,242,.55)}
+.sobre .btn{margin-top:28px}
+
+/* Faixa */
+.faixa{background:radial-gradient(70% 90% at 50% 100%,#1B5039 0%,var(--musgo) 70%);color:var(--papel);text-align:center;padding-block:clamp(80px,10vw,128px)}
+.faixa p{font-family:var(--serif);font-size:clamp(56px,9vw,112px);line-height:.98}
+.faixa em{color:var(--cobre-claro)}
+
+/* Depoimentos */
+.dep{background:var(--linho);padding-block:clamp(64px,8vw,104px)}
+.dep .cab{text-align:center;margin-bottom:44px}
+.dep h2{font-size:clamp(36px,4.4vw,52px);margin-top:12px}
+.deps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.dp{background:var(--papel);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.dp .est{color:var(--cobre);letter-spacing:.2em;font-size:12px}
+.dp q{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.45;quotes:"\201C" "\201D"}
+.dp .quem{margin-top:auto;display:flex;gap:12px;align-items:center;font-size:13px}
+.dp .quem i{width:34px;height:34px;border-radius:50%;background:var(--linho);display:grid;place-items:center;font-style:normal;font-family:var(--serif);font-size:16px;flex:none}
+.dp .quem small{display:block;color:var(--cinza);font-size:11.5px}
+.dep .nota{text-align:center;color:var(--cinza);font-size:12px;margin-top:22px}
+
+/* CTA */
+.cta{padding-block:clamp(72px,9vw,120px);text-align:center}
+.cta h2{font-size:clamp(38px,5vw,58px);line-height:1.05;margin-top:14px}
+.cta h2 em{color:var(--cobre)}
+.cta p{color:var(--cinza);margin:20px auto 0;max-width:40ch}
+.cta .acoes{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+footer{background:var(--carvao);color:rgba(248,246,242,.7);font-size:13px;padding-block:56px 32px}
+footer .grade{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+footer h4{margin:0 0 14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--papel);font-weight:600}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none}
+footer .assin{font-family:var(--serif);font-size:24px;color:var(--papel)}
+footer .assin small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--cobre-claro);text-transform:uppercase;margin-top:6px}
+footer .bio{margin-top:16px;max-width:30ch}
+footer .base{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px}
+
+@media (max-width:900px){
+  .topo nav{display:none}
+  .topo .btn{margin-left:auto}
+  .filo .w,.sobre .w{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .card.big{grid-column:span 2}
+.card.full{grid-column:1/-1;min-height:200px}
+  .deps{grid-template-columns:1fr}
+  footer .grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .bento{grid-template-columns:1fr}.card.big{grid-column:auto}
+  footer .grade{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+<a href="../" class="demo-back">&larr; Portfolio</a>
+<span class="demo-txt">Demo project · names, contacts and figures are fictional</span>
+<a href="estetica-pt.html" class="demo-sw" hreflang="pt-BR">Português</a>
+</div>
+<script>if(location.hash==='#preview'){document.currentScript.previousElementSibling.style.display='none'}</script>
+<style>
+.demo-bar{position:relative;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+padding:8px max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+background:#141414;color:#d9d6cf;font:500 12.5px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.01em}
+.demo-bar a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 10px}
+.demo-bar a:hover{background:rgba(255,255,255,.1)}
+.demo-txt{flex:1 1 220px;text-align:center;opacity:.85}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="mono" viewBox="0 0 40 40"><path d="M6 38V18a14 14 0 0 1 28 0v20" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 38V19a10 10 0 0 1 20 0v19" fill="none" stroke="currentColor" stroke-width="1"/><text x="20" y="31" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="currentColor">HD</text></symbol>
+<symbol id="zap" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3Z" fill="currentColor"/></symbol>
+</defs></svg>
+
+<header class="topo g" id="topo">
+  <div class="w in">
+    <a class="marca" href="#inicio"><svg class="mono" style="color:var(--cobre-claro)"><use href="#mono"/></svg><span><b>Dra. Helena Duarte</b><small>Aesthetic Medicine</small></span></a>
+    <nav aria-label="Sections"><a href="#tratamentos">Treatments</a><a href="#sobre">About</a><a href="#pacientes">Patients</a><a href="#consulta">Contact</a></nav>
+    <a class="btn btn-claro" href="#consulta">Book a consultation</a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero g">
+  <svg class="arcos" viewBox="0 0 400 420" aria-hidden="true" fill="none" stroke="#F8F6F2"><path d="M20 420V200a180 180 0 0 1 360 0v220" stroke-width="1.2"/><path d="M55 420V205a145 145 0 0 1 290 0v215"/><path d="M90 420V210a110 110 0 0 1 220 0v210"/></svg>
+  <div class="w">
+    <p class="nome">Dra. Helena Duarte</p>
+    <span class="eyebrow">Aesthetic medicine · skin care</span>
+    <h1>You are<em>a work of art.</em></h1>
+    <p class="sub">Our job is to reveal what is already there. A natural result is never an accident; it is technique.</p>
+    <div class="acoes">
+      <a class="btn btn-claro" href="#consulta"><svg><use href="#zap"/></svg>Book a consultation</a>
+      <a class="link" href="#tratamentos">See treatments &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="filo g">
+  <div class="w">
+    <div>
+      <span class="eyebrow">Our philosophy</span>
+      <h2 class="serif">Beauty no one notices.<br><em>Results you can feel.</em></h2>
+      <p class="txt">Every patient already carries their best version. The doctor's role is to reveal it with technique, careful listening and respect for each face. No feature is changed; it is only refined.</p>
+    </div>
+    <div class="quadro">
+      <svg class="arco" viewBox="0 0 200 240" fill="none" stroke="#F8F6F2" aria-hidden="true"><path d="M10 240V100a90 90 0 0 1 180 0v140" stroke-width="1.2"/><path d="M30 240V104a70 70 0 0 1 140 0v136"/></svg>
+      <div class="selo"><svg width="56" height="56" style="color:var(--papel)" aria-hidden="true"><use href="#mono"/></svg><b>HELENA DUARTE</b><small>Aesthetic Medicine</small></div>
+      <blockquote>“The angel is already in the marble. Our job is to set it free.”</blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="trat g" id="tratamentos">
+  <div class="w">
+    <div class="cab"><span class="eyebrow">Specialties</span><h2 class="serif">Treatments</h2></div>
+    <div class="bento">
+      <article class="card c-musgo big"><span class="anel"></span><span class="tag">Aesthetic medicine</span><h3>Facial<br>harmonization</h3><p>Minimally invasive procedures that enhance your natural features. Every protocol is designed for you, never for a generic standard.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+      <article class="card c-cobre"><span class="anel"></span><span class="tag">Procedure</span><h3>Botulinum<br>toxin</h3><p>Softens expression lines with precision. Never frozen. Never overdone.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+      <article class="card c-papel"><span class="tag">Procedure</span><h3>Bio-stimulators</h3><p>Stimulate your body's own collagen production for firmer skin over time.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+      <article class="card c-musgo"><span class="tag">Skin</span><h3>Clinical<br>skin care</h3><p>Assessment and follow-up for acne, oily or sensitive skin and hair loss.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+      <article class="card c-linho"><span class="tag">Skin</span><h3>Dark spots &amp;<br>melasma</h3><p>Tailored protocols to even out skin tone with lasting results.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+      <article class="card c-cobre full"><span class="anel"></span><span class="tag">Prevention</span><h3>Prescribed<br>skincare</h3><p>A fully personalized routine based on a clinical assessment.</p><a class="mais" href="#consulta">Learn more &rarr;</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sobre g" id="sobre">
+  <div class="w">
+    <div class="retrato" role="img" aria-label="Placeholder for the doctor's portrait"><span class="ini">HD</span><div class="status"><i></i><span><b>Dra. Helena Duarte</b><br><small>By appointment only</small></span></div></div>
+    <div>
+      <span class="eyebrow">About</span>
+      <h2 class="serif">Physician.<br>Aesthetic medicine.<br><em>Skin artist.</em></h2>
+      <p class="txt">Helena Duarte is a physician focused on aesthetic medicine, facial harmonization and graceful aging. Her work starts with listening, because no natural result comes from a generic protocol.</p>
+      <div class="creds">
+        <div class="cred"><span class="ic">&#9673;</span><span><b>Physician</b><small>License 00000 · fictional</small></span></div>
+        <div class="cred"><span class="ic">&#10022;</span><span><b>Aesthetic medicine</b><small>Facial harmonization · graceful aging</small></span></div>
+        <div class="cred"><span class="ic">&#9906;</span><span><b>Private practice</b><small>In-person visits by appointment</small></span></div>
+      </div>
+      <a class="btn btn-claro" href="#consulta"><svg><use href="#zap"/></svg>Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="faixa g" aria-label="Practice motto"><p>Refine,<br><em>don't change.</em></p></section>
+
+<section class="dep g" id="pacientes">
+  <div class="w">
+    <div class="cab"><span class="eyebrow">Patients</span><h2 class="serif">What patients say about the experience</h2></div>
+    <div class="deps">
+      <figure class="dp" style="margin:0"><span class="est" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>For the first time I feel like myself after a procedure. She understood exactly what I wanted: to look rested, not different.</q><figcaption class="quem"><i>A</i><span>Ana C.<small>Patient</small></span></figcaption></figure>
+      <figure class="dp" style="margin:0"><span class="est" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Flawless care. She explained every step clearly and the result looked completely natural.</q><figcaption class="quem"><i>B</i><span>Beatriz L.<small>Patient</small></span></figcaption></figure>
+      <figure class="dp" style="margin:0"><span class="est" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>I finally treated my melasma after years of trying. She promised no miracles, was honest about the process, and the results came.</q><figcaption class="quem"><i>C</i><span>Clara M.<small>Patient</small></span></figcaption></figure>
+    </div>
+    <p class="nota">Illustrative testimonials written for this demo.</p>
+  </div>
+</section>
+
+<section class="cta g" id="consulta">
+  <div class="w">
+    <span class="eyebrow">Consultation</span>
+    <h2 class="serif">Ready to reveal<br><em>your best self?</em></h2>
+    <p>Book a consultation and find the right treatment for you. The first step is a conversation.</p>
+    <div class="acoes"><a class="btn btn-musgo" href="#consulta"><svg><use href="#zap"/></svg>Book on WhatsApp</a><a class="btn btn-linha" href="#consulta">Call the practice</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="g">
+  <div class="w">
+    <div class="grade">
+      <div><div class="assin">Dra. Helena Duarte<small>Aesthetic Medicine</small></div><p class="bio">Aesthetic medicine focused on natural results. You are a work of art; our job is to reveal it.</p></div>
+      <div><h4>Treatments</h4><ul><li>Facial harmonization</li><li>Botulinum toxin</li><li>Bio-stimulators</li><li>Clinical skin care</li><li>Dark spots &amp; melasma</li><li>Prescribed skincare</li></ul></div>
+      <div><h4>About</h4><ul><li><a href="#sobre">About the doctor</a></li><li><a href="#pacientes">Patients</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>(00) 90000-0000</li><li>@dra.helenaduarte</li><li>contato@exemplo.com</li></ul></div>
+    </div>
+    <div class="base"><span>&copy; 2026 Dra. Helena Duarte · CRM 00000 · All rights reserved</span><span>Demo website</span></div>
+  </div>
+</footer>
+<script>
+(function(){var t=document.getElementById('topo'),h=document.querySelector('.hero');
+if(!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(e){t.classList.toggle('claro',!e[0].isIntersecting)},{rootMargin:'-64px 0px 0px 0px'}).observe(h);})();
+</script>
+</body>
+</html>
