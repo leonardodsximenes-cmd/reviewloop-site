@@ -1,514 +1,402 @@
-<!doctype html><html><head><meta charset=utf8><title>ReviewLoop</title><meta name="description" content="Website, Google Business Profile and review QR for local businesses. $250 setup."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="en" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ReviewLoop: websites and Google profiles for local US businesses</title>
+<meta name="description" content="A website, a complete Google Business Profile and a review QR card for small local businesses in the US. $250 setup, live in 5 to 7 business days.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ReviewLoop: websites and Google profiles for local US businesses">
+<meta property="og:description" content="Website, Google Business Profile and review QR card for local businesses. $250 setup.">
+<meta property="og:url" content="https://reviewloop-site.vercel.app/">
+<meta property="og:image" content="https://reviewloop-site.vercel.app/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#efe9e0">
+<link rel="canonical" href="https://reviewloop-site.vercel.app/">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
 <style>
-/* Layout: galeria escura de estúdio. Abertura com as quatro obras em leque; cada caso é uma sala com a luz da própria paleta. Tema escuro primeiro, claro como alternativa. */
-:root{
-  --bg:#0E0E10; --bg-2:#151518; --panel:#1A1A1E; --ink:#F1EEE8; --muted:#9B978F; --line:rgba(241,238,232,.10);
-  --gold:#D8C3A0; --gold-ink:#141210;
-  --display:"Instrument Serif","Times New Roman",serif;
-  --body:Geist,"Helvetica Neue",Arial,sans-serif;
-  --mono:"Geist Mono",ui-monospace,Menlo,monospace;
-  color-scheme:dark;
+:root {
+  --p-bg: #efe9e0; --p-surface: #e2d9cb; --p-ink: #22261f; --p-muted: #5a5c53;
+  --p-accent: #2e5b44; --p-accent-ink: #ffffff; --p-action: #2e5b44; --p-action-ink: #ffffff;
+  --p-inv-bg: #22261f; --p-inv-surface: #2e322a; --p-inv-ink: #efe9e0; --p-inv-muted: #a19e96;
+  --p-inv-accent: #efe9e0; --p-inv-accent-ink: #22261f; --p-inv-action: #efe9e0; --p-inv-action-ink: #22261f;
+  --font-display: "Instrument Sans", system-ui, sans-serif;
+  --font-text: "Instrument Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.028em;
+  --display-tracking-xl: -0.036em;
+  --display-stretch: 96%;
+  --ly-scale: 1.04;
 }
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
-  --bg:#F3F1EC; --bg-2:#ECE9E2; --panel:#FFFFFF; --ink:#151413; --muted:#69655E; --line:rgba(21,20,19,.12); --gold:#7A5F33; --gold-ink:#FFFFFF; color-scheme:light}}
-:root[data-theme="light"]{
-  --bg:#F3F1EC; --bg-2:#ECE9E2; --panel:#FFFFFF; --ink:#151413; --muted:#69655E; --line:rgba(21,20,19,.12); --gold:#7A5F33; --gold-ink:#FFFFFF; color-scheme:light}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,p,figure{margin:0}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-:root[data-lang="pt"] .en,:root:not([data-lang="pt"]) .pt{display:none!important}
-.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.serif{font-family:var(--display);font-weight:400;letter-spacing:-.01em}
-
-@supports (animation-timeline:view()){
-  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
-}
-@keyframes rise{from{opacity:.55;transform:translateY(32px)}to{opacity:1;transform:none}}
-
-/* Barra flutuante */
-.bar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;z-index:30;pointer-events:none}
-.bar .pill{pointer-events:auto;max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:18px;height:56px;padding:0 10px 0 20px;border-radius:999px;
-  background:color-mix(in srgb,var(--bg-2) 80%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px var(--line)}
-.bar .holder{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.sig{font-family:var(--display);font-size:22px;text-decoration:none;white-space:nowrap}
-.sig i{color:var(--gold)}
-.bar nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
-.bar nav a{text-decoration:none;color:var(--muted);transition:color .2s}
-.bar nav a:hover{color:var(--ink)}
-.lang{display:inline-flex;border-radius:999px;padding:3px;box-shadow:inset 0 0 0 1px var(--line)}
-.lang button{font:500 12px/1 var(--body);border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.cta-s{font:500 13.5px/1 var(--body);text-decoration:none;background:var(--gold);color:var(--gold-ink);padding:11px 16px;border-radius:999px;white-space:nowrap}
-
-/* Abertura */
-.hero{position:relative;padding-top:calc(env(safe-area-inset-top,0px) + 150px);padding-bottom:40px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;background:
-  radial-gradient(40% 35% at 18% 30%,rgba(14,51,36,.55),transparent 70%),
-  radial-gradient(35% 30% at 78% 20%,rgba(13,31,53,.7),transparent 70%),
-  radial-gradient(30% 30% at 60% 80%,rgba(127,184,168,.18),transparent 70%);pointer-events:none;animation:drift 22s ease-in-out infinite alternate}
-@keyframes drift{to{transform:translate3d(3%,2%,0) scale(1.05)}}
-.hero .wrap{position:relative}
-.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(54px,9.4vw,138px);line-height:.92;letter-spacing:-.025em;max-width:11ch}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.rot{display:inline-grid;vertical-align:bottom;height:1.02em;overflow:hidden}
-.rot span{grid-area:1/1;animation:cycle 18s infinite both;font-style:italic;color:var(--gold);opacity:0;white-space:nowrap}
-.rot span:nth-child(2){animation-delay:3s}.rot span:nth-child(3){animation-delay:6s}.rot span:nth-child(4){animation-delay:9s}.rot span:nth-child(5){animation-delay:12s}.rot span:nth-child(6){animation-delay:15s}
-@keyframes cycle{0%{opacity:0;transform:translateY(.4em)}2%,15%{opacity:1;transform:none}17%,100%{opacity:0;transform:translateY(-.4em)}}
-.rot span:first-child{opacity:1;animation-name:cycle1}
-@keyframes cycle1{0%,15%{opacity:1;transform:none}17%,98%{opacity:0;transform:translateY(-.4em)}100%{opacity:1;transform:none}}
-/* Abrangência */
-.scope{padding-block:clamp(80px,10vw,140px) 0}
-.scope .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);margin-top:44px}
-.scope h3{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;list-style:none;margin:0;padding:0}
-.fields li{padding:14px 0;border-top:1px solid var(--line);min-width:0}
-.fields b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
-.fields small{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
-.deliv{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.deliv li{font-size:14.5px;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:var(--bg-2)}
-.scope .more{margin-top:22px;color:var(--muted);font-size:15px;max-width:48ch}
-@media (max-width:980px){.scope .grid{grid-template-columns:1fr}}
-@media (max-width:520px){.fields{grid-template-columns:1fr}}
-.hero .sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-top:36px}
-.hero .sub p{max-width:48ch;color:var(--muted);font-size:clamp(16px,1.5vw,18px)}
-.hero .acts{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px/1 var(--body);text-decoration:none;padding:15px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .25s}
-.btn:hover{transform:translateY(-2px)}
-.btn.gold{background:var(--gold);color:var(--gold-ink)}
-.btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
-
-/* Leque de prévias */
-.fan{position:relative;height:clamp(300px,42vw,520px);margin-top:56px;perspective:1600px}
-.fan .shot{position:absolute;top:0;width:min(58%,640px);aspect-ratio:16/10;max-width:100%;border-radius:14px;overflow:hidden;background:var(--panel);box-shadow:0 40px 90px -40px rgba(0,0,0,.8),inset 0 0 0 1px var(--line);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.fan .shot iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
-.fan .a{left:0;transform:rotate(-6deg) translateY(40px);z-index:1}
-.fan .b{left:50%;margin-left:calc(min(58%,640px) / -2);z-index:3;transform:translateY(0)}
-.fan .c{right:0;transform:rotate(6deg) translateY(40px);z-index:2}
-.fan:hover .a{transform:rotate(-9deg) translate(-20px,30px)}
-.fan:hover .c{transform:rotate(9deg) translate(20px,30px)}
-.fan .shot{animation:float 7s ease-in-out infinite}
-.fan .b{animation-delay:-2s}.fan .c{animation-delay:-4s}
-@keyframes float{50%{translate:0 -10px}}
-
-/* Fatos */
-.facts{border-block:1px solid var(--line);margin-top:72px}
-.facts .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.fact{padding:26px 20px 24px;min-width:0}
-.fact+.fact{border-left:1px solid var(--line)}
-.fact b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1}
-.fact > span{display:block;margin-top:8px;color:var(--muted);font-size:14px}
-
-.marquee{overflow:hidden;padding-block:26px;border-bottom:1px solid var(--line)}
-.marquee .track{display:flex;width:max-content;animation:mq 40s linear infinite}
-.marquee span{font-family:var(--display);font-style:italic;font-size:clamp(26px,3vw,40px);color:var(--muted);padding-right:56px;white-space:nowrap}
-.marquee span::after{content:"·";padding-left:56px;color:var(--gold)}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* Trabalhos */
-.work-head{padding-block:clamp(80px,10vw,140px) 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end}
-.h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,92px);line-height:.95;letter-spacing:-.02em}
-.h2 em{font-style:italic;color:var(--gold)}
-.work-head p{color:var(--muted);max-width:44ch}
-
-.case{position:relative;margin-bottom:28px;border-radius:28px;overflow:hidden;background:var(--bg-2);box-shadow:inset 0 0 0 1px var(--line)}
-.case::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at var(--gx,85%) 50%,var(--glow),transparent 70%);opacity:.9;pointer-events:none}
-.case .in{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:clamp(28px,4vw,56px);padding:clamp(24px,4vw,52px);align-items:center}
-.case.flip .in{grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr)}
-.case.flip .txt{order:2}
-.case .idx{display:flex;gap:12px;align-items:center}
-.case .idx .tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
-.case h3{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.4vw,60px);line-height:1;letter-spacing:-.015em;margin-top:18px}
-.case p.one{color:var(--muted);margin-top:14px;max-width:42ch}
-.meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 18px;margin-top:26px;font-size:14px;align-items:center}
-.meta dt{font:500 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.meta dd{margin:0;min-width:0}
-.sws{display:flex;gap:4px}
-.sws i{width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font-size:12.5px;padding:5px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
-.case .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
-.case .acts .btn{padding:13px 18px;font-size:14px}
-
-.device{border-radius:16px;padding:8px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line),0 50px 100px -50px rgba(0,0,0,.9);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.case:hover .device{transform:translateY(-6px) rotate(-.4deg)}
-.device .top{display:flex;align-items:center;gap:6px;padding:4px 8px 10px}
-.device .top i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
-.device .top span{margin-left:8px;font:400 11px/1 var(--mono);color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.screen{position:relative;aspect-ratio:16/10;max-width:100%;overflow:hidden;border-radius:9px;background:#fff}
-.screen iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
-.screen a{position:absolute;inset:0;z-index:2}
-.screen .hint{position:absolute;right:10px;bottom:10px;z-index:3;font:500 11.5px/1 var(--body);background:rgba(10,10,12,.78);color:#fff;padding:8px 11px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .3s}
-.case:hover .screen .hint{opacity:1}
-.pages{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.pages button{font:500 12px/1 var(--body);background:transparent;border:0;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer}
-.pages button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-
-.c1{--glow:rgba(14,80,52,.55)} .c2{--glow:rgba(24,58,98,.75);--gx:15%} .c3{--glow:rgba(34,102,237,.32)} .c4{--glow:rgba(127,184,168,.35);--gx:15%}
-
-/* Direções */
-.dirs{padding-block:clamp(80px,10vw,140px)}
-.dgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
-.d{border-radius:20px;padding:22px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;transition:transform .35s}
-.d:hover{transform:translateY(-6px)}
-.d .aa{font-size:96px;line-height:.9}
-.d b{font-size:15px;font-weight:600}
-.d small{display:block;font-family:var(--mono);font-size:11px;opacity:.75;margin-top:4px}
-.d1{background:#0E3324;color:#F8F6F2}.d1 .aa{font-family:"Cormorant Garamond",serif;font-style:italic;color:#D9A27E}
-.d2{background:#0D1F35;color:#fff}.d2 .aa{font-family:"Playfair Display",serif;font-weight:700;color:#D4AF37}
-.d3{background:#FFFFFF;color:#34363A}.d3 .aa{font-family:"Source Serif 4",serif;color:#2266ED}
-.d4{background:#F4F5F2;color:#0F1E24}.d4 .aa{font-family:"Young Serif",serif;color:#2F6F62}
-
-/* Processo */
-.proc{border-top:1px solid var(--line);padding-block:clamp(80px,10vw,140px)}
-.proc .grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
-.steps{list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid var(--line)}
-.steps li:last-child{border-bottom:1px solid var(--line)}
-.steps li::before{content:"0" counter(s);font-family:var(--display);font-size:34px;line-height:1;color:var(--gold)}
-.steps h3{font-size:19px;font-weight:600}
-.steps p{color:var(--muted);margin-top:6px;font-size:15px}
-.incl{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-.incl span{font-size:13.5px;padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
-
-/* Contato */
-.end{padding-block:clamp(80px,10vw,140px);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
-.end::before{content:"";position:absolute;left:50%;top:60%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(216,195,160,.16),transparent);pointer-events:none}
-.end .h2{max-width:13ch;margin:0 auto}
-.end p{color:var(--muted);max-width:44ch;margin:22px auto 0}
-.mail{position:relative;display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:32px;padding:8px 8px 8px 20px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:var(--panel);max-width:100%}
-.mail code{font:400 15px/1.3 var(--mono);user-select:all;overflow-wrap:anywhere}
-footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-@media (max-width:980px){
-  .bar nav{display:none}.lang{margin-left:auto}
-  .case .in,.case.flip .in{grid-template-columns:1fr}.case.flip .txt{order:0}
-  .work-head,.proc .grid,.hero .sub{grid-template-columns:1fr}
-  .dgrid{grid-template-columns:1fr 1fr}
-  .facts .wrap{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}
-}
-@media (max-width:560px){
-  .cta-s{display:none}
-  .fan .a,.fan .c{display:none}.fan .b{width:100%;left:0;margin-left:0}.fan{height:auto;aspect-ratio:16/10}
-  .dgrid{grid-template-columns:1fr}
-  .d{min-height:200px}
-}
-@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.rot span{opacity:0!important}.rot span:first-child{opacity:1!important}}
-/* ReviewLoop: projeto de SEO local */
-.c0{--glow:rgba(216,195,160,.22);--gx:80%}
-.seo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
-.panel{background:var(--panel);border-radius:18px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);min-width:0}
-.tog{display:inline-flex;border-radius:999px;padding:3px;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:14px}
-.tog button{font:500 12.5px/1 var(--body);border:0;background:transparent;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer}
-.tog button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.pack .row{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
-.pack .row:first-child{border-top:0}
-.pack .pos{font-family:var(--display);font-size:26px;line-height:1;color:var(--muted)}
-.pack .nm{font-weight:500;font-size:15px}
-.pack .mt{font-size:12.5px;color:var(--muted)}
-.pack .you{background:color-mix(in srgb,var(--gold) 14%,transparent);margin-inline:-22px;padding-inline:22px}
-.pack .you .pos{color:var(--gold)}
-.star{color:var(--gold);letter-spacing:.08em}
-.qr{display:block;width:100%;max-width:210px;aspect-ratio:1;background:#fff;border-radius:10px;padding:8px;margin:12px auto 14px}
-.qrp{text-align:center}
-.qrp b{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1;display:block}
-.qrp small{display:block;color:var(--muted);font-size:13.5px;margin-top:6px}
-.note{color:var(--muted);font-size:13px;margin-top:14px}
-.plans{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:14px;margin-top:40px}
-.plan{border-radius:24px;padding:clamp(24px,3vw,40px);box-shadow:inset 0 0 0 1px var(--line);background:var(--bg-2);min-width:0}
-.plan.main{background:var(--gold);color:var(--gold-ink);box-shadow:none}
-.plan .amt{font-family:var(--display);font-size:clamp(64px,8vw,104px);line-height:.95;margin:14px 0 6px}
-.plan .amt small{font:400 15px var(--body);opacity:.75;margin-left:6px}
-.plan ul{list-style:none;margin:20px 0 0;padding:0}
-.plan li{padding:11px 0;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent);font-size:15px}
-.plan .label{color:inherit;opacity:.7}
-.m1{margin-top:18px}
-@media (max-width:980px){.seo-grid,.plans{grid-template-columns:1fr}}
-
-.lead{max-width:760px;margin:36px auto 0;text-align:left}
-.lead .f2{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
-.fld{display:flex;flex-direction:column;gap:6px;min-width:0;margin-top:14px}
-.lead .f2 .fld{margin-top:0}
-.fld label{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.fld input,.fld select,.fld textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--panel);border:0;border-radius:12px;padding:14px 16px;box-shadow:inset 0 0 0 1px var(--line);width:100%;min-width:0}
-.fld textarea{resize:vertical}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.send{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
-.send .btn[disabled]{opacity:.6;cursor:wait}
-.msg{margin:0;font-size:14.5px;color:var(--muted)}
-.msg.ok{color:var(--gold)}.msg.err{color:#E58C7A}
-.lead .note{margin-top:14px}
-@media (max-width:640px){.lead .f2{grid-template-columns:1fr}}
 </style>
-
-<div class="bar"><div class="holder"><div class="pill">
-  <a class="sig" href="#top">Review<i>Loop</i></a>
-  <nav aria-label="Menu">
-    <a href="#seo"><span class="pt">SEO local</span><span class="en">Local SEO</span></a>
-    <a href="#trabalhos"><span class="pt">Sites</span><span class="en">Websites</span></a>
-    <a href="#preco"><span class="pt">Preço</span><span class="en">Pricing</span></a>
-    <a href="#processo"><span class="pt">Processo</span><span class="en">Process</span></a>
-  </nav>
-  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" id="lang-en" data-l="en" aria-pressed="true">EN</button><button type="button" id="lang-pt" data-l="pt" aria-pressed="false">PT</button></div>
-  <a class="cta-s" href="#contato"><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></a>
-</div></div></div>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<!-- page CSS: only inside the visuals, plus the language switch -->
+<style>
+  /* the language switch in the nav: two plain words, the current one in ink */
+  .lang { display: inline-flex; align-items: center; gap: var(--s-1); }
+  .lang button { font: 500 15px/1 var(--font-text); color: var(--muted); background: none; border: 0; padding: 0 var(--s-2); height: 44px; min-width: 44px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
+  /* the form's two field columns on the page's split line */
+  #audit .form { column-gap: var(--gutter); }
+  /* the plans: open columns (no box), the name, the price, the rows, the link */
+  #pricing .plan-col { display: flex; flex-direction: column; align-items: flex-start; }
+  #pricing .plan-col > .rows { align-self: stretch; }
+  #pricing .plan-col h3 { font-size: var(--t-card); font-weight: 500; }
+  /* the phone: the setup at rest fills its two screens; the steps' photograph stands tall */
+  @media (max-width: 639px) {
+    main > #setup:not(.is-live) { min-height: 200svh; }
+    #process .frame { --ratio: 195% !important; }
+    #process .rows > li { padding-block: var(--s-6); }
+    /* the opening photograph a little lower, so the longer heading and both buttons end on the first screen */
+    .hero--photo { --photo: 34svh; }
+    /* the footer keeps one screen: the studio and contact columns repeat the legal line and the big button */
+    .footer__col--studio, .footer__col--contact { display: none; }
+  }
+  /* the tablet held upright (640 to 1023): each section kept to one screen */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    main > section#setup[data-moment="pinned-chapters"]:not(.is-live) .mo-pc__visual > img { max-height: 16svh; }
+    /* the three demo cards and the two plans stay side by side */
+    #work .grid > .card { grid-column: auto / span 4; }
+    #pricing .plan-col { grid-column: auto / span 6; }
+    /* the review-text picture would push the plans past one screen: on the tablet the plans stand alone */
+    #pricing .pricing__visual { display: none; }
+    /* the steps' photograph becomes a wide strip under the list */
+    #process .frame { --ratio: 40% !important; }
+    /* the audit: its words beside the photograph, the form under them */
+    #audit .grid > .span-5 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); row-gap: var(--s-5); align-items: start; }
+    #audit .grid > .span-5 > .frame { grid-column: 2; grid-row: 1 / span 2; }
+  }
+  /* 320 wide: the logo, the button and the menu button do not fit 272px; the button waits in the menu sheet */
+  @media (max-width: 359px) { .nav:not(.is-open) .nav__actions { display: none; } }
+  /* the pricing visual: the review text the setup includes, beside the two plans */
+  #pricing .pricing__visual { margin: 0; align-self: stretch; }
+  #pricing .pricing__visual img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: var(--r-lg); }
+  /* the opening heading is longer than the hero kit's 32 characters: it keeps three lines in its box */
+  .hero--photo h1 { font-size: clamp(40px, 4.4vw, 68px); max-width: 17ch; }
+  /* the form's fallback after a failed send: a mailto with what was typed */
+  .form__fallback a { color: var(--action); }
+</style>
+</head>
+<body>
+<!-- type: service (site-kind other)
+     deal: hero photo (words in the solid box on the left of the frame), nav nav-split, close close-type,
+     footer footer-dark, rhythm dark-band (#work), buttons tonal, mark ring, palette clay-pine, type instrument, radius soft
+     moments: pinned-chapters in #setup -->
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top" data-pt="Pular para o conteúdo">Skip to content</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+    <nav class="nav__links" aria-label="Main" data-pt-aria-label="Principal">
+      <div class="nav__item"><a class="nav__link" href="#setup" data-pt="Setup">Setup</a></div>
+      <div class="nav__item">
+        <a class="nav__link" href="#work"><span data-pt="Demos">Demos</span> <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="samples/dental.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-dental-880.jpg" alt="Home screen of the Northline Dental Studio demo site" data-pt-alt="Tela inicial do site de demonstração Northline Dental Studio" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card">Northline Dental Studio</span>
+            </a>
+            <a class="menu-card span-4" href="samples/beauty.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-skin-880.jpg" alt="Home screen of the skin clinic demo site" data-pt-alt="Tela inicial do site de demonstração da clínica de pele" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card" data-pt="Clínica de pele">Skin clinic</span>
+            </a>
+            <a class="menu-card span-4" href="samples/legal.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-law-880.jpg" alt="Home screen of the law firm demo site" data-pt-alt="Tela inicial do site de demonstração do escritório de advocacia" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card" data-pt="Escritório de advocacia">Law firm</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#pricing" data-pt="Preços">Prices</a></div>
+      <div class="nav__item"><a class="nav__link" href="#process" data-pt="Etapas">Steps</a></div>
+    </nav>
+    <div class="nav__actions">
+      <div class="lang" role="group" aria-label="Language" data-pt-aria-label="Idioma">
+        <button type="button" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false" aria-label="Português">PT</button>
+      </div>
+      <a class="btn btn--primary" href="#audit" data-pt="Pedir auditoria grátis">Get a free audit</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
 <main id="top">
-<section class="hero">
-  <div class="wrap">
-    <p class="label"><span class="pt">Site + Google Business Profile + avaliações · negócios locais nos EUA</span><span class="en">Website + Google Business Profile + reviews · local businesses in the US</span></p>
-    <h1 style="margin-top:22px">
-      <span class="pt">Seja <em>encontrado.</em> Seja <em>avaliado.</em> Receba a ligação.</span>
-      <span class="en">Get <em>found.</em> Get <em>reviewed.</em> Get the call.</span>
-    </h1>
-    <div class="sub">
-      <p><span class="pt">Criamos o site, otimizamos o seu perfil no Google e colocamos um cartão com QR code no balcão, para o cliente satisfeito deixar uma avaliação em 20 segundos. Um preço, uma configuração.</span><span class="en">We build your website, optimize your Google Business Profile and put a QR card on your counter so happy customers can leave a review in 20 seconds. One price, one setup.</span></p>
-      <div class="acts"><a class="btn gold" href="#seo"><span class="pt">Ver o projeto</span><span class="en">See the project</span> &darr;</a><a class="btn ghost" href="#contato"><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></a></div>
-    </div>
-    <div class="fan" aria-hidden="true">
-      <div class="shot a" data-fit><iframe tabindex="-1" title="" data-src="samples/beauty.html"></iframe></div>
-      <div class="shot c" data-fit><iframe tabindex="-1" title="" data-src="samples/legal.html"></iframe></div>
-      <div class="shot b" data-fit><iframe tabindex="-1" title="" data-src="samples/dental.html"></iframe></div>
-    </div>
-  </div>
-  <div class="facts"><div class="wrap">
-    <div class="fact"><b>$250</b><span><span class="pt">configuração única</span><span class="en">one-time setup</span></span></div>
-    <div class="fact"><b>5 – 7</b><span><span class="pt">dias úteis para entregar</span><span class="en">business days to deliver</span></span></div>
-    <div class="fact"><b>20 s</b><span><span class="pt">para o cliente avaliar por QR</span><span class="en">for a customer to review by QR</span></span></div>
-    <div class="fact"><b>$49</b><span><span class="pt">por mês, manutenção opcional</span><span class="en">per month, optional care</span></span></div>
-  </div></div>
-  <div class="marquee" aria-hidden="true"><div class="track">
-    <span class="pt">Encanadores</span><span class="pt">Ar-condicionado</span><span class="pt">Dedetização</span><span class="pt">Paisagismo</span><span class="pt">Salões</span><span class="pt">Barbearias</span><span class="pt">Estética</span><span class="pt">Eletricistas</span><span class="pt">Dentistas</span><span class="pt">Advogados</span><span class="pt">Encanadores</span><span class="pt">Ar-condicionado</span><span class="pt">Dedetização</span><span class="pt">Paisagismo</span><span class="pt">Salões</span><span class="pt">Barbearias</span><span class="pt">Estética</span><span class="pt">Eletricistas</span><span class="pt">Dentistas</span><span class="pt">Advogados</span>
-    <span class="en">Plumbers</span><span class="en">HVAC</span><span class="en">Pest control</span><span class="en">Landscaping</span><span class="en">Salons</span><span class="en">Barbers</span><span class="en">Skin clinics</span><span class="en">Electricians</span><span class="en">Dentists</span><span class="en">Law firms</span><span class="en">Plumbers</span><span class="en">HVAC</span><span class="en">Pest control</span><span class="en">Landscaping</span><span class="en">Salons</span><span class="en">Barbers</span><span class="en">Skin clinics</span><span class="en">Electricians</span><span class="en">Dentists</span><span class="en">Law firms</span>
-  </div></div>
-</section>
-
-<section class="wrap" id="seo">
-  <div class="work-head">
-    <h2 class="h2 rv"><span class="pt">O projeto de <em>SEO local</em></span><span class="en">The <em>local SEO</em> project</span></h2>
-    <p class="rv"><span class="pt">Quando alguém pesquisa "encanador perto de mim", o Google mostra três negócios. Avaliações recentes, perfil completo e um site coerente com o perfil decidem quem aparece. O sistema abaixo cuida das quatro partes.</span><span class="en">When someone searches "plumber near me", Google shows three businesses. Recent reviews, a complete profile and a site that matches it decide who makes the list. The system below handles all four parts.</span></p>
-  </div>
-
-  <article class="case c0 rv">
-    <div class="in" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr)">
-      <div class="txt">
-        <div class="idx"><span class="tag"><span class="pt">Sistema completo</span><span class="en">Complete system</span></span><span class="tag">EN</span></div>
-        <h3><span class="pt">Perfil, site e avaliações em um só ciclo</span><span class="en">Profile, site and reviews in one loop</span></h3>
-        <p class="one"><span class="pt">Cada avaliação nova reforça o perfil, o perfil leva ao site, o site gera a ligação e a ligação vira mais uma avaliação.</span><span class="en">Each new review strengthens the profile, the profile leads to the site, the site produces the call, and the call becomes another review.</span></p>
-        <dl class="meta">
-          <dt><span class="pt">Perfil</span><span class="en">Profile</span></dt><dd class="chips"><span class="pt">Categorias</span><span class="en">Categories</span><span class="pt">Serviços</span><span class="en">Services</span><span class="pt">Horários</span><span class="en">Hours</span><span class="pt">Fotos</span><span class="en">Photos</span></dd>
-          <dt><span class="pt">Site</span><span class="en">Site</span></dt><dd class="chips"><span class="pt">Mobile primeiro</span><span class="en">Mobile first</span><span class="pt">Ligar e rotas</span><span class="en">Call and directions</span><span>Schema</span></dd>
-          <dt><span class="pt">Avaliações</span><span class="en">Reviews</span></dt><dd class="chips"><span class="pt">Cartão QR</span><span class="en">QR card</span><span class="pt">Modelos de SMS</span><span class="en">Text templates</span><span class="pt">Respostas prontas</span><span class="en">Reply templates</span></dd>
-        </dl>
-        <p class="note"><span class="pt">Pedimos avaliação a todos os clientes, nunca só aos satisfeitos. O Google proíbe filtrar quem recebe o convite.</span><span class="en">We ask every customer for a review, never only the happy ones. Google forbids filtering who gets the invite.</span></p>
+  <section class="hero hero--photo" data-enter data-calm="left" aria-labelledby="hero-h">
+    <img class="hero__bg" src="assets/img/photo-f64429213-1280.jpg" srcset="assets/img/photo-f64429213-500.jpg 500w, assets/img/photo-f64429213-960.jpg 960w, assets/img/photo-f64429213-1280.jpg 1280w" sizes="(max-width: 639px) 188vw, 100vw" width="1280" height="853" alt="A hairdresser styles a client's hair in a small salon" data-pt-alt="Uma cabeleireira penteia uma cliente em um salão pequeno" style="--ly-pos: 50% 35%; --ly-pos-phone: 62% 35%" fetchpriority="high" decoding="async" data-phone-fill data-source="stand-in" data-subject="local salon at work">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h" data-pt="Sites e avaliações no Google para negócios locais nos EUA">Websites and Google reviews for local US businesses</h1>
+        <p class="hero__lead" data-pt="Criamos o seu site, completamos o seu perfil no Google Business e desenhamos um cartão QR de avaliações. US$&nbsp;250 uma vez, no ar em 5 a 7 dias úteis.">We build your website, fill in your Google Business Profile and design a review QR card. $250 once, live in 5 to 7 business days.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#audit"><span data-pt="Pedir auditoria grátis">Get a free audit</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#work" data-pt="Ver os sites de demonstração">See the demo sites</a></div>
       </div>
-      <div class="seo-grid">
-        <div class="panel">
-          <p class="label" style="margin-bottom:12px"><span class="pt">Resultado do mapa · exemplo ilustrativo</span><span class="en">Map results · illustrative example</span></p>
-          <div class="tog" role="group" aria-label="Before or after"><button type="button" id="b-before" aria-pressed="true"><span class="pt">Antes</span><span class="en">Before</span></button><button type="button" id="b-after" aria-pressed="false"><span class="pt">Depois de 90 dias</span><span class="en">After 90 days</span></button></div>
-          <div class="pack" id="pack" aria-live="polite"></div>
-          <p class="note"><span class="pt">Negócios inventados. Mostra a ideia, não o resultado de um cliente.</span><span class="en">Made-up businesses. It shows the idea, not a client's result.</span></p>
+    </div></div>
+  </section>
+
+  <!-- pinned-chapters (references/moments.md): two screens, three steps, one visual each -->
+  <section class="section" id="setup" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="setup-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="setup-h" data-pt="O que o setup de US$&nbsp;250 inclui">What the $250 setup includes</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3 data-pt="Um perfil completo no Google Business">A complete Google Business Profile</h3>
+            <p data-pt="Categorias, serviços, horários, área de atendimento e fotos, preenchidos para o perfil dizer o mesmo que o site.">Categories, services, hours, service area and photos, filled in so the profile says what the website says.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/setup-profile-1200.jpg" srcset="assets/img/setup-profile-640.jpg 640w, assets/img/setup-profile-1200.jpg 1200w" data-pt-src="assets/img/setup-profile-pt-1200.jpg" data-pt-srcset="assets/img/setup-profile-pt-640.jpg 640w, assets/img/setup-profile-pt-1200.jpg 1200w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 640px" width="1200" height="900" loading="lazy" alt="A Google Business Profile checklist: primary category, services and prices, hours, service area, photos and website link, each marked done" data-pt-alt="Lista do perfil no Google Business: categoria principal, serviços e preços, horários, área de atendimento, fotos e link do site, todos feitos" decoding="async" data-source="client" data-subject="profile checklist"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3 data-pt="Um site para celular igual ao perfil">A phone-first website that matches it</h3>
+            <p data-pt="Seus serviços, sua cidade e seus horários em uma página rápida, com botões de ligar e de rota no topo.">Your services, town and hours on one fast page, with call and directions buttons at the top.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/setup-phone-1200.jpg" srcset="assets/img/setup-phone-640.jpg 640w, assets/img/setup-phone-1200.jpg 1200w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 640px" width="1200" height="900" loading="lazy" alt="The Northline Dental Studio demo site on a phone screen" data-pt-alt="O site de demonstração Northline Dental Studio na tela de um celular" decoding="async" data-source="client" data-subject="demo site"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3 data-pt="Um cartão QR para avaliações no Google">A QR card for Google reviews</h3>
+            <p data-pt="Um cartão de balcão que abre o seu link de avaliação, e mensagens que pedem a avaliação a todos os clientes, não só aos satisfeitos.">A counter card that opens your review link, and texts that ask every customer, never only the happy ones.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/setup-qr-1200.jpg" srcset="assets/img/setup-qr-640.jpg 640w, assets/img/setup-qr-1200.jpg 1200w" data-pt-src="assets/img/setup-qr-pt-1200.jpg" data-pt-srcset="assets/img/setup-qr-pt-640.jpg 640w, assets/img/setup-qr-pt-1200.jpg 1200w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 640px" width="1200" height="900" loading="lazy" alt="A counter card with a QR code and the line: Enjoyed your visit? Scan to leave a Google review." data-pt-alt="Cartão de balcão com QR code e a frase: Gostou do atendimento? Escaneie e deixe uma avaliação no Google." decoding="async" data-source="client" data-subject="review QR card"></figure>
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
+
+  <section class="section ground-inverse" id="work" style="--hm: 2" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="work-h" data-pt="Sites de demonstração para três ramos">Demo websites for three trades</h2>
+        <p data-pt="Os negócios são fictícios; o design e a construção são os mesmos que você recebe. Abra um para navegar.">The businesses are fictional; the design and build are what you get. Open one to browse it.</p>
+      </div>
+      <div class="grid">
+        <a class="card card--open span-4" href="samples/dental.html#preview">
+          <h3 data-pt="Site da Northline Dental Studio">Northline Dental Studio website</h3>
+          <p data-pt="Escrito em inglês para pacientes nos EUA, com preços à vista e pedido de consulta.">Written in English for US patients, with prices up front and a booking request.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/work-dental-880.jpg" srcset="assets/img/work-dental-880.jpg 880w, assets/img/work-dental.jpg 1440w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 440px, (max-width: 1279px) 880px, 410px" width="1440" height="900" alt="Home screen of the Northline Dental Studio demo site" data-pt-alt="Tela inicial do site de demonstração Northline Dental Studio" loading="lazy" decoding="async" data-source="client" data-subject="demo site"></div>
+        </a>
+        <a class="card card--open span-4" href="samples/beauty.html#preview">
+          <h3 data-pt="Site de clínica de pele">Skin clinic website</h3>
+          <p data-pt="Uma página em tom de revista, verde-musgo e cobre, com agendamento por mensagem.">One page in a magazine style, moss green and copper, with booking by message.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/work-skin-880.jpg" srcset="assets/img/work-skin-880.jpg 880w, assets/img/work-skin.jpg 1440w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 440px, (max-width: 1279px) 880px, 410px" width="1440" height="900" alt="Home screen of the skin clinic demo site" data-pt-alt="Tela inicial do site de demonstração da clínica de pele" loading="lazy" decoding="async" data-source="client" data-subject="demo site"></div>
+        </a>
+        <a class="card card--open span-4" href="samples/legal.html#preview">
+          <h3 data-pt="Site de escritório de advocacia">Law firm website</h3>
+          <p data-pt="Uma área de atuação explicada passo a passo, com um teste de 6 perguntas e resultado na hora.">One practice area explained step by step, with a 6-question check and an instant result.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/work-law-880.jpg" srcset="assets/img/work-law-880.jpg 880w, assets/img/work-law.jpg 1440w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 440px, (max-width: 1279px) 880px, 410px" width="1440" height="900" alt="Home screen of the law firm demo site" data-pt-alt="Tela inicial do site de demonstração do escritório de advocacia" loading="lazy" decoding="async" data-source="client" data-subject="demo site"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" style="--hm: 2" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="pricing-h" data-pt="Preços">Prices</h2>
+        <p data-pt="Metade do setup no início e metade depois que você aprova a prévia. Sem contrato: a manutenção é opcional.">Half of the setup at the start, half after you approve the preview. No contract: the care plan is optional.</p>
+      </div>
+      <div class="grid">
+        <div class="span-4 stack-4 plan-col">
+          <h3 data-pt="O que o setup de US$&nbsp;250 cobre">What the $250 setup covers</h3>
+          <div class="price"><span class="t-stat">$250</span><span class="t-small muted" data-pt="uma vez">once</span></div>
+          <p data-pt="US$&nbsp;125 no início e US$&nbsp;125 depois da prévia.">$125 at the start and $125 after the preview.</p>
+          <ul class="rows">
+            <li><span class="rows__name" data-pt="Site para celular">Phone-first website</span></li>
+            <li><span class="rows__name" data-pt="Perfil completo no Google Business">Complete Google Business Profile</span></li>
+            <li><span class="rows__name" data-pt="SEO local básico">Local SEO basics</span></li>
+            <li><span class="rows__name" data-pt="Cartão QR e mensagens de avaliação">Review QR card and texts</span></li>
+            <li><span class="rows__name" data-pt="Site, perfil e domínio na sua conta">Site, profile and domain in your account</span></li>
+          </ul>
+        <a class="link" href="#audit" data-pt="Começar pela auditoria grátis">Start with the free audit</a>
         </div>
-        <div class="panel qrp">
-          <p class="label"><span class="pt">Cartão do balcão · exemplo</span><span class="en">Counter card · sample</span></p>
-          <canvas class="qr" id="qr" width="250" height="250" role="img" aria-label="Sample QR, not scannable"></canvas>
-          <b><span class="pt">Gostou do atendimento?</span><span class="en">Enjoyed your visit?</span></b>
-          <small><span class="pt">Escaneie e deixe uma avaliação no Google. Leva 20 segundos.</span><span class="en">Scan to leave a Google review. It takes 20 seconds.</span></small>
-          <p class="note"><span class="pt">QR decorativo. O real aponta para o seu link de avaliação.</span><span class="en">Decorative QR. The real one points to your review link.</span></p>
+        <div class="span-4 stack-4 plan-col">
+          <h3 data-pt="O que a manutenção de US$&nbsp;49 cobre">What the $49 care plan covers</h3>
+          <div class="price"><span class="t-stat">$49</span><span class="t-small muted" data-pt="por mês">a month</span></div>
+          <p data-pt="Opcional, para quem quer o site e o perfil sempre em dia.">Optional, for owners who want the site and profile kept up to date.</p>
+          <ul class="rows">
+            <li><span class="rows__name" data-pt="Atualizações de conteúdo e horários">Content and hours updates</span></li>
+            <li><span class="rows__name" data-pt="Um post por mês no Google">One Google post a month</span></li>
+            <li><span class="rows__name" data-pt="Resumo mensal de avaliações e ligações">Monthly reviews and calls summary</span></li>
+            <li><span class="rows__name" data-pt="Hospedagem e segurança">Hosting and security</span></li>
+            <li><span class="rows__name" data-pt="Cancele em qualquer mês">Cancel in any month</span></li>
+          </ul>
+        <a class="link" href="#audit" data-pt="Começar pela auditoria grátis">Start with the free audit</a>
+        </div>
+        <figure class="span-4 pricing__visual">
+          <img src="assets/img/pricing-text-1200.jpg" srcset="assets/img/pricing-text-640.jpg 640w, assets/img/pricing-text-1200.jpg 1200w" data-pt-src="assets/img/pricing-text-pt-1200.jpg" data-pt-srcset="assets/img/pricing-text-pt-640.jpg 640w, assets/img/pricing-text-pt-1200.jpg 1200w" sizes="(max-width: 639px) 100vw, 640px" width="1200" height="900" loading="lazy" decoding="async" alt="A phone showing the review request text: Thanks for coming in today. If you have a minute, a Google review helps other neighbors find us. Leave a Google review." data-pt-alt="Um celular com a mensagem de pedido de avaliação: Obrigado pela visita hoje. Se tiver um minuto, uma avaliação no Google ajuda outros vizinhos a nos encontrar. Deixar uma avaliação no Google." data-source="client" data-subject="review request text">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process" style="--hm: 2" aria-labelledby="process-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-6 stack-5">
+          <h2 id="process-h" data-pt="Da auditoria ao site no ar em 4 etapas">From audit to live site in 4 steps</h2>
+          <ol class="rows">
+            <li><span class="rows__name" data-pt="1. Auditoria grátis">1. Free audit</span><p data-pt="Você manda o nome do negócio e a cidade. Respondemos com o que falta no perfil e no site.">You send the business name and town. We reply with what the profile and site are missing.</p></li>
+            <li><span class="rows__name" data-pt="2. Início">2. Start</span><p data-pt="Você paga os primeiros US$&nbsp;125 e nós começamos o site e o perfil.">You pay the first $125 and we start on the site and the profile.</p></li>
+            <li><span class="rows__name" data-pt="3. Prévia">3. Preview</span><p data-pt="Você vê tudo antes de ir ao ar e pede uma rodada de ajustes.">You see everything before it goes live and ask for one round of changes.</p></li>
+            <li><span class="rows__name" data-pt="4. No ar">4. Live</span><p data-pt="Você paga os outros US$&nbsp;125. O site vai ao ar e o arquivo do cartão chega, 5 a 7 dias úteis após o início.">You pay the other $125. The site goes live and the card file arrives, 5 to 7 business days from the start.</p></li>
+          </ol>
+        </div>
+        <div class="frame frame--photo span-6 start-7" style="--ratio: 100%">
+          <img class="frame__img" src="assets/img/photo-f191900053-960.jpg" srcset="assets/img/photo-f191900053-500.jpg 500w, assets/img/photo-f191900053-960.jpg 960w" sizes="(max-width: 639px) 830px, (max-width: 1023px) 100vw, 810px" width="960" height="640" alt="A landscaper mows the lawn in front of a house" data-pt-alt="Um jardineiro corta a grama em frente a uma casa" loading="lazy" decoding="async" style="object-position: 62% 50%" data-source="stand-in" data-subject="local trade at work">
         </div>
       </div>
     </div>
-  </article>
-</section>
+  </section>
 
-<section class="wrap" id="trabalhos">
-  <div class="work-head" style="padding-top:clamp(40px,6vw,80px)">
-    <h2 class="h2 rv"><span class="pt">O site que <em>acompanha</em></span><span class="en">The website that <em>goes with it</em></span></h2>
-    <p class="rv"><span class="pt">Projetos de demonstração com nomes e dados fictícios, feitos para mostrar a qualidade de design e de construção. Abra qualquer um para navegar.</span><span class="en">Demonstration projects with fictional names and details, built to show design and build quality. Open any of them to browse.</span></p>
-  </div>
-
-  <article class="case c1 rv">
-    <div class="in">
-      <div class="txt">
-        <div class="idx"><span class="tag"><span class="pt">Saúde · estética</span><span class="en">Health · aesthetics</span></span></div>
-        <h3><span class="pt">Clínica de pele</span><span class="en">Skin clinic</span></h3>
-        <p class="one"><span class="pt">Página única com tom de revista, agendamento por mensagem e blocos que alternam verde-musgo e cobre.</span><span class="en">A one-page magazine-style site with message booking and blocks alternating moss green and copper.</span></p>
-        <dl class="meta">
-          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#0E3324"></i><i style="background:#B9774F"></i><i style="background:#D9A27E"></i><i style="background:#E3DACB"></i><i style="background:#F8F6F2"></i></dd>
-          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Agendamento</span><span class="en">Booking</span><span class="pt">Menu que muda de cor</span><span class="en">Colour-shifting menu</span></dd>
-        </dl>
-        <div class="acts"><a class="btn gold" href="samples/beauty.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
+  <section class="section" id="audit" style="--hm: 2" aria-labelledby="audit-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-5">
+          <h2 id="audit-h" data-pt="Auditoria grátis do seu perfil e site">Free audit of your profile and site</h2>
+          <p data-pt="Diga o negócio e a cidade. Respondemos em até 2 dias úteis, em inglês ou português, com o que falta no seu perfil do Google e no seu site.">Tell us the business and the town. We reply within 2 business days, in English or Portuguese, with what your Google profile and site are missing.</p>
+          <div class="frame frame--photo" style="--ratio: 90%">
+            <img class="frame__img" src="assets/img/photo-f51439363-960.jpg" srcset="assets/img/photo-f51439363-500.jpg 500w, assets/img/photo-f51439363-960.jpg 960w, assets/img/photo-f51439363.jpg 1280w" sizes="(max-width: 1023px) 100vw, 710px" width="960" height="640" alt="Hands holding a phone, searching for a local business" data-pt-alt="Mãos segurando um celular, procurando um negócio local" loading="lazy" decoding="async" style="object-position: 0% 50%" data-source="stand-in" data-subject="customer searching on a phone">
+          </div>
+        </div>
+        <div class="span-6 start-7">
+          <form class="form" action="https://formsubmit.co/leonardodsximenes@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/leonardodsximenes@gmail.com" data-sent="Your audit request is in. We reply within 2 business days." data-pt-data-sent="Seu pedido de auditoria chegou. Respondemos em até 2 dias úteis." data-sending="Sending" data-pt-data-sending="Enviando" data-failed="Not sent: the connection failed. Your answers are still here; try again." data-pt-data-failed="Não enviado: a conexão falhou. Suas respostas continuam aqui; tente de novo." data-fix="{n} fields to fix." data-pt-data-fix="{n} campos para corrigir." novalidate>
+            <input type="hidden" name="_subject" value="ReviewLoop: new audit request">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="field"><label for="f-name" data-pt="Seu nome">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" hidden data-pt="Escreva o seu nome.">Write your name.</p></div>
+            <div class="field"><label for="f-email" data-pt="E-mail">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" hidden data-pt="Escreva um e-mail com @, como nome@empresa.com.">Write an email address with an @, like name@company.com.</p></div>
+            <div class="field"><label for="f-biz" data-pt="Nome do negócio">Business name</label>
+              <input id="f-biz" name="business" type="text" autocomplete="organization" required aria-describedby="f-biz-err">
+              <p class="field__error" id="f-biz-err" hidden data-pt="Escreva o nome do negócio.">Write the name of the business.</p></div>
+            <div class="field"><label for="f-city" data-pt="Cidade e estado">Town and state</label>
+              <input id="f-city" name="city" type="text" autocomplete="address-level2" required aria-describedby="f-city-err">
+              <p class="field__error" id="f-city-err" hidden data-pt="Escreva a cidade e o estado.">Write the town and the state.</p></div>
+            <div class="field"><label for="f-type" data-pt="Tipo de negócio">Type of business</label>
+              <select id="f-type" name="type">
+                <option value="Plumbing" data-pt="Encanamento">Plumbing</option>
+                <option value="HVAC" data-pt="Ar-condicionado">HVAC</option>
+                <option value="Cleaning" data-pt="Limpeza">Cleaning</option>
+                <option value="Landscaping" data-pt="Paisagismo">Landscaping</option>
+                <option value="Salon or barber" data-pt="Salão ou barbearia">Salon or barber</option>
+                <option value="Beauty or skin clinic" data-pt="Estética">Beauty or skin clinic</option>
+                <option value="Other" data-pt="Outro">Other</option>
+              </select></div>
+            <div class="field"><label for="f-link" data-pt="Site ou link do Google (opcional)">Website or Google link (optional)</label>
+              <input id="f-link" name="link" type="text" autocomplete="url" inputmode="url"></div>
+            <div class="hp" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="f-hp">Leave empty</label><input id="f-hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+            <div class="btn-row"><button class="btn btn--primary" type="submit" data-pt="Pedir auditoria grátis">Get a free audit</button></div>
+            <p class="form__status" role="status" data-form-status></p>
+            <p class="form__fallback t-small" hidden><span data-pt="Ou envie os mesmos dados por e-mail:">Or send the same details by email:</span> <a href="mailto:leonardodsximenes@gmail.com" data-fallback-mail>leonardodsximenes@gmail.com</a></p>
+            <p class="t-small" data-pt="Usamos seus dados só para responder a este pedido. O estúdio fica no Brasil e atende por e-mail.">We use your details only to reply to this request. The studio is based in Brazil and works by email.</p>
+          </form>
+        </div>
       </div>
-      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>skin-clinic · demo</span></div>
-        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/beauty.html"></iframe><a href="samples/beauty.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
     </div>
-  </article>
-
-  <article class="case c4 flip rv">
-    <div class="in">
-      <div class="txt">
-        <div class="idx"><span class="tag"><span class="pt">Odontologia · EUA</span><span class="en">Dentistry · USA</span></span><span class="tag"><span class="pt">Nativo em inglês</span><span class="en">English-native</span></span></div>
-        <h3>Northline Dental Studio</h3>
-        <p class="one"><span class="pt">Escrito do zero em inglês para o mercado americano: preços à vista, primeira consulta sem pressa e animações suaves ao rolar.</span><span class="en">Written from scratch in English for the US market: prices up front, an unhurried first visit and gentle scroll animations.</span></p>
-        <dl class="meta">
-          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#F4F5F2"></i><i style="background:#0F1E24"></i><i style="background:#7FB8A8"></i><i style="background:#2F6F62"></i><i style="background:#E7D8BE"></i></dd>
-          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Tabela de preços</span><span class="en">Price list</span><span class="pt">Pedido de consulta</span><span class="en">Booking request</span></dd>
-        </dl>
-        <div class="acts"><a class="btn gold" href="samples/dental.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
-      </div>
-      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>northline-dental · demo</span></div>
-        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/dental.html"></iframe><a href="samples/dental.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
-    </div>
-  </article>
-
-  <article class="case c3 rv">
-    <div class="in">
-      <div class="txt">
-        <div class="idx"><span class="tag"><span class="pt">Serviços profissionais</span><span class="en">Professional services</span></span></div>
-        <h3><span class="pt">Escritório de advocacia</span><span class="en">Law firm</span></h3>
-        <p class="one"><span class="pt">Uma área de atuação explicada como produto: painel de exemplo, gráfico que acompanha a leitura e um teste curto com resultado na hora.</span><span class="en">A practice area explained like a product: a sample dashboard, a chart that follows the reader and a short check with an instant result.</span></p>
-        <dl class="meta">
-          <dt><span class="pt">Paleta</span><span class="en">Palette</span></dt><dd class="sws"><i style="background:#FFFFFF"></i><i style="background:#F5F6F6"></i><i style="background:#34363A"></i><i style="background:#2266ED"></i><i style="background:#050607"></i></dd>
-          <dt><span class="pt">Recursos</span><span class="en">Features</span></dt><dd class="chips"><span class="pt">Teste de 6 perguntas</span><span class="en">6-question check</span><span class="pt">Tema escuro</span><span class="en">Dark mode</span></dd>
-        </dl>
-        <div class="acts"><a class="btn gold" href="samples/legal.html#preview"><span class="pt">Abrir o site</span><span class="en">Open the site</span></a></div>
-      </div>
-      <figure class="device"><div class="top" aria-hidden="true"><i></i><i></i><i></i><span>law-firm · demo</span></div>
-        <div class="screen" data-fit><iframe tabindex="-1" title="Site preview" loading="lazy" data-src="samples/legal.html"></iframe><a href="samples/legal.html#preview" aria-label="Open the site"></a><span class="hint"><span class="pt">Abrir site</span><span class="en">Open site</span> &nearr;</span></div></figure>
-    </div>
-  </article>
-</section>
-
-<section class="wrap" id="preco" style="padding-block:clamp(40px,6vw,80px) clamp(60px,8vw,100px)">
-  <p class="label rv"><span class="pt">Preço</span><span class="en">Pricing</span></p>
-  <h2 class="h2 rv" style="margin-top:16px;max-width:16ch"><span class="pt">Um preço de entrada. <em>Manutenção opcional.</em></span><span class="en">One setup price. <em>Optional care.</em></span></h2>
-  <div class="plans">
-    <div class="plan main rv">
-      <span class="label"><span class="pt">Configuração</span><span class="en">Setup</span></span>
-      <div class="amt">$250<small><span class="pt">uma vez</span><span class="en">one time</span></small></div>
-      <p><span class="pt">Site, perfil do Google, SEO local básico e kit de avaliações por QR.</span><span class="en">Website, Google Business Profile, local SEO basics and the review QR kit.</span></p>
-      <ul>
-        <li><span class="pt">Entrega em 5 a 7 dias úteis</span><span class="en">Delivered in 5 to 7 business days</span></li>
-        <li><span class="pt">Prévia antes de pagar o saldo</span><span class="en">Preview before you pay the balance</span></li>
-        <li><span class="pt">Uma rodada de ajustes incluída</span><span class="en">One revision round included</span></li>
-        <li><span class="pt">Site, perfil e domínio ficam na sua conta</span><span class="en">Site, profile and domain stay in your account</span></li>
-      </ul>
-    </div>
-    <div class="plan rv">
-      <span class="label"><span class="pt">Manutenção</span><span class="en">Care plan</span></span>
-      <div class="amt">$49<small><span class="pt">por mês</span><span class="en">per month</span></small></div>
-      <p style="color:var(--muted)"><span class="pt">Opcional. Cancele em qualquer mês.</span><span class="en">Optional. Cancel any month.</span></p>
-      <ul>
-        <li><span class="pt">Atualizações de conteúdo e horários</span><span class="en">Content and hours updates</span></li>
-        <li><span class="pt">Um post mensal no Google</span><span class="en">One Google post a month</span></li>
-        <li><span class="pt">Resumo mensal de avaliações e ligações</span><span class="en">Monthly reviews and calls summary</span></li>
-        <li><span class="pt">Hospedagem e segurança</span><span class="en">Hosting and security</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="proc" id="processo"><div class="wrap grid">
-  <div class="rv">
-    <p class="label"><span class="pt">Processo</span><span class="en">Process</span></p>
-    <h2 class="h2" style="margin-top:16px"><span class="pt">Da auditoria ao <em>site no ar</em></span><span class="en">From audit to <em>live site</em></span></h2>
-    <div class="incl"><span>Design</span><span class="pt">Texto</span><span class="en">Copywriting</span><span>Google Business Profile</span><span class="pt">Domínio</span><span class="en">Domain</span><span class="pt">Cartão QR</span><span class="en">QR card</span><span>Search Console</span></div>
-  </div>
-  <ol class="steps">
-    <li class="rv"><div><h3><span class="pt">Auditoria grátis</span><span class="en">Free audit</span></h3><p><span class="pt">Você manda o nome do negócio e a cidade. Respondo com o que falta no perfil e no site.</span><span class="en">You send the business name and city. I reply with what is missing on your profile and site.</span></p></div></li>
-    <li class="rv"><div><h3><span class="pt">Prévia</span><span class="en">Preview</span></h3><p><span class="pt">Uma página de exemplo com o seu nome, serviços e cidade, sem compromisso.</span><span class="en">A sample page with your name, services and city, no commitment.</span></p></div></li>
-    <li class="rv"><div><h3><span class="pt">Configuração</span><span class="en">Setup</span></h3><p><span class="pt">Site, perfil do Google e SEO local básico, com a sua aprovação em cada etapa.</span><span class="en">Site, Google profile and local SEO basics, with your approval at each step.</span></p></div></li>
-    <li class="rv"><div><h3><span class="pt">Cartão e avaliações</span><span class="en">Card and reviews</span></h3><p><span class="pt">Cartão QR pronto para imprimir, modelos de mensagem e respostas para boas e más avaliações.</span><span class="en">A print-ready QR card, message templates and replies for good and bad reviews.</span></p></div></li>
-  </ol>
-</div></section>
-
-<section class="end" id="contato"><div class="wrap">
-  <h2 class="h2 rv"><span class="pt">Quer ver como <em>está o seu?</em></span><span class="en">Want to see how <em>yours</em> looks?</span></h2>
-  <p class="rv"><span class="pt">Preencha abaixo. Respondo com uma auditoria gratuita do seu perfil no Google e do seu site, e uma prévia de como a sua página pode ficar.</span><span class="en">Fill in the form below. I reply with a free audit of your Google profile and website, and a preview of how your page could look.</span></p>
-  <form class="lead rv" id="lead" novalidate>
-    <div class="f2">
-      <div class="fld"><label for="f-name"><span class="pt">Seu nome</span><span class="en">Your name</span></label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-      <div class="fld"><label for="f-email"><span class="pt">E-mail</span><span class="en">Email</span></label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-      <div class="fld"><label for="f-biz"><span class="pt">Nome do negócio</span><span class="en">Business name</span></label><input id="f-biz" name="business" type="text" required></div>
-      <div class="fld"><label for="f-city"><span class="pt">Cidade e estado</span><span class="en">City and state</span></label><input id="f-city" name="city" type="text" required></div>
-      <div class="fld"><label for="f-type"><span class="pt">Tipo de negócio</span><span class="en">Type of business</span></label>
-        <select id="f-type" name="type"><option>Plumbing</option><option>HVAC</option><option>Pest control</option><option>Landscaping</option><option>Salon or barber</option><option>Skin or beauty clinic</option><option>Electrician</option><option>Other</option></select></div>
-      <div class="fld"><label for="f-link"><span class="pt">Site ou link do Google (opcional)</span><span class="en">Website or Google link (optional)</span></label><input id="f-link" name="link" type="text" autocomplete="url"></div>
-    </div>
-    <div class="fld"><label for="f-msg"><span class="pt">O que você gostaria de melhorar? (opcional)</span><span class="en">What would you like to improve? (optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
-    <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-    <div class="send"><button class="btn gold" type="submit" id="f-send"><span class="pt">Pedir auditoria grátis</span><span class="en">Request my free audit</span></button><p class="msg" id="f-msg-out" role="status" aria-live="polite"></p></div>
-    <p class="note"><span class="pt">Usamos seus dados só para responder a este pedido.</span><span class="en">We use your details only to reply to this request.</span></p>
-  </form>
-</div></section>
+  </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 ReviewLoop</span><span><span class="pt">Estúdio web baseado no Brasil. Os sites mostrados são demonstrações com dados fictícios.</span><span class="en">Web studio based in Brazil. The websites shown are demos with fictional data.</span></span></div></footer>
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h" data-pt="Veja o que falta no seu perfil do Google">See what your Google profile is missing</h2>
+        <p data-pt="Grátis, em inglês ou português, em até 2 dias úteis.">Free, in English or Portuguese, within 2 business days.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="#audit"><span data-pt="Pedir auditoria grátis">Get a free audit</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+          <p class="footer__lede" data-pt="Sites, perfis no Google Business e cartões QR de avaliação para negócios locais nos EUA.">Websites, Google Business Profiles and review QR cards for local businesses in the US.</p>
+        </div>
+        <div class="span-2 footer__col"><h3 data-pt="Setup">Setup</h3><ul><li><a href="#setup" data-pt="O que inclui">What it includes</a></li><li><a href="#pricing" data-pt="Preços">Prices</a></li></ul></div>
+        <div class="span-2 footer__col"><h3 data-pt="Trabalho">Work</h3><ul><li><a href="#work" data-pt="Sites de demonstração">Demo sites</a></li><li><a href="#process" data-pt="Etapas">Steps</a></li></ul></div>
+        <div class="span-2 footer__col footer__col--contact"><h3 data-pt="Contato">Contact</h3><ul><li><a href="#audit" data-pt="Auditoria grátis">Free audit</a></li></ul></div>
+        <div class="span-2 footer__col footer__col--studio"><h3 data-pt="Estúdio">Studio</h3><ul><li data-pt="No Brasil">In Brazil</li><li data-pt="Inglês e português">English and Portuguese</li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 ReviewLoop. <span data-pt="Estúdio web baseado no Brasil. Os sites de demonstração mostram negócios fictícios.">Web studio based in Brazil. The demo sites show fictional businesses.</span></span>
+        <a class="credits" href="credits.html">Photographs via Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
 <script>
-(function(){
-  var root=document.documentElement;
-  function rd(k){try{return localStorage.getItem(k)}catch(e){return null}}
-  function wr(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  var data={
-    en:{before:[["Delta Plumbing","4.8 ★ · 212 reviews",0],["Summit Home Services","4.6 ★ · 148 reviews",0],["Harbor Pipe &amp; Drain","4.7 ★ · 96 reviews",0],["Your business","4.3 ★ · 14 reviews · profile 40%",1]],
-        after:[["Your business","4.8 ★ · 73 reviews · profile 100%",1],["Delta Plumbing","4.8 ★ · 218 reviews",0],["Summit Home Services","4.6 ★ · 151 reviews",0],["Harbor Pipe &amp; Drain","4.7 ★ · 97 reviews",0]]},
-    pt:{before:[["Delta Plumbing","4,8 ★ · 212 avaliações",0],["Summit Home Services","4,6 ★ · 148 avaliações",0],["Harbor Pipe &amp; Drain","4,7 ★ · 96 avaliações",0],["Seu negócio","4,3 ★ · 14 avaliações · perfil 40%",1]],
-        after:[["Seu negócio","4,8 ★ · 73 avaliações · perfil 100%",1],["Delta Plumbing","4,8 ★ · 218 avaliações",0],["Summit Home Services","4,6 ★ · 151 avaliações",0],["Harbor Pipe &amp; Drain","4,7 ★ · 97 avaliações",0]]}};
-  var state='before',pack=document.getElementById('pack');
-  function draw(){
-    var l=root.getAttribute('data-lang')||'en';
-    pack.innerHTML=data[l][state].map(function(d,i){return '<div class="row'+(d[2]?' you':'')+'"><span class="pos">'+(i+1)+'</span><div><div class="nm">'+d[0]+'</div><div class="mt">'+d[1]+'</div></div><span class="star">'+(d[2]?'★':'')+'</span></div>'}).join('');
-    document.getElementById('b-before').setAttribute('aria-pressed',state==='before');
-    document.getElementById('b-after').setAttribute('aria-pressed',state==='after')}
-  document.getElementById('b-before').onclick=function(){state='before';draw()};
-  document.getElementById('b-after').onclick=function(){state='after';draw()};
-  function setLang(l){
-    root.setAttribute('data-lang',l);root.lang=l==='en'?'en':'pt-BR';
-    document.getElementById('lang-pt').setAttribute('aria-pressed',l==='pt');
-    document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
-    wr('lang',l);draw()}
-  document.querySelectorAll('[data-fit] iframe').forEach(function(f){f.setAttribute('src',f.dataset.src+'#preview')});
-  function fit(){document.querySelectorAll('[data-fit]').forEach(function(s){s.querySelector('iframe').style.transform='scale('+(s.clientWidth/1280)+')'})}
-  window.addEventListener('resize',fit);
-  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
-  setLang(location.hash==='#pt'?'pt':(location.hash==='#en'?'en':(rd('lang')||'en')));fit();
+/* EN/PT: English is written in the page; each [data-pt] holds the Portuguese, swapped in on a click.
+   Attributes take data-pt-<name> (alt, aria-label, data-sent ...). The choice is kept per visitor. */
+(function () {
+  var root = document.documentElement;
+  var attrs = ['src', 'srcset', 'alt', 'aria-label', 'data-sent', 'data-sending', 'data-failed', 'data-fix'];
+  var title = { en: document.title, pt: 'ReviewLoop: sites e perfis no Google para negócios locais nos EUA' };
+  function setLang(l) {
+    document.querySelectorAll('[data-pt]').forEach(function (el) {
+      if (!('en' in el.dataset)) el.dataset.en = el.textContent;
+      var text = l === 'pt' ? el.dataset.pt : el.dataset.en;
+      el.textContent = text;
+      if ('text' in el.dataset) el.dataset.text = text;
+    });
+    attrs.forEach(function (a) {
+      document.querySelectorAll('[data-pt-' + a + ']').forEach(function (el) {
+        var key = 'en-' + a;
+        if (el.getAttribute('data-' + key) === null) el.setAttribute('data-' + key, el.getAttribute(a) || '');
+        el.setAttribute(a, l === 'pt' ? el.getAttribute('data-pt-' + a) : el.getAttribute('data-' + key));
+      });
+    });
+    root.lang = l === 'pt' ? 'pt-BR' : 'en';
+    document.title = title[l];
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    try { localStorage.setItem('rl-lang', l); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+  var start = 'en';
+  try { start = localStorage.getItem('rl-lang') || 'en'; } catch (e) {}
+  if (location.hash === '#pt') start = 'pt';
+  if (location.hash === '#en') start = 'en';
+  if (start === 'pt') setLang('pt');
 
-  var c=document.getElementById('qr'),x=c.getContext('2d'),n=25,s=c.width/n,seed=7;
-  function r(){seed=(seed*9301+49297)%233280;return seed/233280}
-  x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.fillStyle='#0E0E10';
-  function finder(a,b){x.fillStyle='#0E0E10';x.fillRect(a*s,b*s,7*s,7*s);x.fillStyle='#fff';x.fillRect((a+1)*s,(b+1)*s,5*s,5*s);x.fillStyle='#0E0E10';x.fillRect((a+2)*s,(b+2)*s,3*s,3*s)}
-  for(var i=0;i<n;i++)for(var j=0;j<n;j++){var inF=(i<8&&j<8)||(i>n-9&&j<8)||(i<8&&j>n-9);if(!inF&&r()>.52)x.fillRect(i*s,j*s,s,s)}
-  finder(0,0);finder(n-7,0);finder(0,n-7);
-
-  var form=document.getElementById('lead'),out=document.getElementById('f-msg-out'),sendBtn=document.getElementById('f-send');
-  function T(pt,en){return (root.getAttribute('data-lang')==='pt')?pt:en}
-  form.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var f=form.elements;
-    if(f._honey.value){return}
-    if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||!f.business.value.trim()||!f.city.value.trim()){
-      out.className='msg err';out.textContent=T('Preencha nome, e-mail válido, negócio e cidade.','Please add your name, a valid email, business and city.');return}
-    sendBtn.disabled=true;out.className='msg';out.textContent=T('Enviando...','Sending...');
-    var body={name:f.name.value,email:f.email.value,business:f.business.value,city:f.city.value,type:f.type.value,link:f.link.value,message:f.message.value,_subject:'ReviewLoop: new audit request from '+f.business.value,_replyto:f.email.value,_template:'table',_captcha:'false'};
-    fetch('https://formsubmit.co/ajax/leonardodsximenes@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
-      .then(function(r){return r.json().then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw 0;return j})})
-      .then(function(){form.reset();out.className='msg ok';out.textContent=T('Recebido. Respondo em até 2 dias úteis.','Received. I will reply within 2 business days.')})
-      .catch(function(){out.className='msg err';out.textContent=T('Não foi possível enviar agora. Tente novamente em instantes.','Could not send right now. Please try again shortly.')})
-      .then(function(){sendBtn.disabled=false});
-  });
+  /* a failed send: system.js keeps what was typed and writes data-failed in the status line; under it,
+     a mailto with the same details, so the request can still go by email */
+  var form = document.querySelector('#audit form.form');
+  var status = form && form.querySelector('[data-form-status]');
+  var fallback = form && form.querySelector('.form__fallback');
+  if (status && fallback) {
+    new MutationObserver(function () {
+      var text = status.textContent.trim();
+      var failed = text !== '' && text === (form.getAttribute('data-failed') || '').trim();
+      if (failed) {
+        var f = form.elements, lines = [];
+        [['Name', 'name'], ['Email', 'email'], ['Business', 'business'], ['Town and state', 'city'], ['Type', 'type'], ['Link', 'link']].forEach(function (p) {
+          if (f[p[1]] && f[p[1]].value) lines.push(p[0] + ': ' + f[p[1]].value);
+        });
+        fallback.querySelector('[data-fallback-mail]').href = 'mailto:leonardodsximenes@gmail.com?subject=' +
+          encodeURIComponent('ReviewLoop: new audit request') + '&body=' + encodeURIComponent(lines.join('\n'));
+      }
+      fallback.hidden = !failed;
+    }).observe(status, { childList: true, characterData: true, subtree: true });
+  }
 })();
 </script>
-
-</body></html>
+</body>
+</html>

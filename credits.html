@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ReviewLoop: photograph credits</title>
+<meta name="description" content="The photographers, licences and source pages of the photographs on the ReviewLoop website.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ReviewLoop: photograph credits">
+<meta property="og:description" content="Photographers, licences, sources and changes for the photographs on the ReviewLoop website.">
+<meta property="og:url" content="https://reviewloop-site.vercel.app/credits.html">
+<meta property="og:image" content="https://reviewloop-site.vercel.app/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#efe9e0">
+<link rel="canonical" href="https://reviewloop-site.vercel.app/credits.html">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #efe9e0; --p-surface: #e2d9cb; --p-ink: #22261f; --p-muted: #5a5c53;
+  --p-accent: #2e5b44; --p-accent-ink: #ffffff; --p-action: #2e5b44; --p-action-ink: #ffffff;
+  --p-inv-bg: #22261f; --p-inv-surface: #2e322a; --p-inv-ink: #efe9e0; --p-inv-muted: #a19e96;
+  --p-inv-accent: #efe9e0; --p-inv-accent-ink: #22261f; --p-inv-action: #efe9e0; --p-inv-action-ink: #22261f;
+  --font-display: "Instrument Sans", system-ui, sans-serif;
+  --font-text: "Instrument Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.028em;
+  --display-tracking-xl: -0.036em;
+  --display-stretch: 96%;
+  --ly-scale: 1.04;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<!-- page CSS: only inside the visuals, plus the language switch -->
+<style>
+  /* the language switch in the nav: two plain words, the current one in ink */
+  .lang { display: inline-flex; align-items: center; gap: var(--s-1); }
+  .lang button { font: 500 15px/1 var(--font-text); color: var(--muted); background: none; border: 0; padding: 0 var(--s-2); height: 44px; min-width: 44px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
+  /* the form's two field columns on the page's split line */
+  #audit .form { column-gap: var(--gutter); }
+  /* the plans: open columns (no box), the name, the price, the rows, the link */
+  #pricing .plan-col { display: flex; flex-direction: column; align-items: flex-start; }
+  #pricing .plan-col > .rows { align-self: stretch; }
+  #pricing .plan-col h3 { font-size: var(--t-card); font-weight: 500; }
+  /* the phone: the setup at rest fills its two screens; the steps' photograph stands tall */
+  @media (max-width: 639px) {
+    main > #setup:not(.is-live) { min-height: 200svh; }
+    #process .frame { --ratio: 185% !important; }
+    #pricing .rows > li, #process .rows > li { padding-block: var(--s-5); }
+    /* the footer keeps one screen: the studio and contact columns repeat the legal line and the big button */
+    .footer__col--studio, .footer__col--contact { display: none; }
+  }
+  /* the tablet held upright (640 to 1023): each section kept to one screen */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    main > section#setup[data-moment="pinned-chapters"]:not(.is-live) .mo-pc__visual > img { max-height: 16svh; }
+    /* the three demo cards and the two plans stay side by side */
+    #work .grid > .card { grid-column: auto / span 4; }
+    #pricing .plan-col { grid-column: auto / span 6; }
+    #pricing .pricing__visual { grid-column: 1 / -1; --ratio: 32%; }
+    /* the steps' photograph becomes a wide strip under the list */
+    #process .frame { --ratio: 40% !important; }
+    /* the audit: its words beside the photograph, the form under them */
+    #audit .grid > .span-5 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); row-gap: var(--s-5); align-items: start; }
+    #audit .grid > .span-5 > .frame { grid-column: 2; grid-row: 1 / span 2; }
+  }
+  /* 320 wide: the logo, the button and the menu button do not fit 272px; the button waits in the menu sheet */
+  @media (max-width: 359px) { .nav:not(.is-open) .nav__actions { display: none; } }
+  /* the pricing visual: the review text the setup includes, in a frame beside the two plans */
+  #pricing .frame--photo { --ratio: 75%; }
+  /* the form's fallback after a failed send: a mailto with what was typed */
+  .form__fallback a { color: var(--action); }
+</style>
+</head>
+<body>
+<!-- type: service (site-kind other)
+     deal: hero photo (words in the solid box on the left of the frame), nav nav-split, close close-type,
+     footer footer-dark, rhythm dark-band (#work), buttons tonal, mark ring, palette clay-pine, type instrument, radius soft
+     moments: pinned-chapters in #setup -->
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top" data-pt="Pular para o conteúdo">Skip to content</a>
+    <a class="nav__logo" href="index.html"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+    <nav class="nav__links" aria-label="Main" data-pt-aria-label="Principal">
+      <div class="nav__item"><a class="nav__link" href="index.html#setup" data-pt="Setup">Setup</a></div>
+      <div class="nav__item">
+        <a class="nav__link" href="index.html#work"><span data-pt="Demos">Demos</span> <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="samples/dental.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-dental-880.jpg" alt="Home screen of the Northline Dental Studio demo site" data-pt-alt="Tela inicial do site de demonstração Northline Dental Studio" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card">Northline Dental Studio</span>
+            </a>
+            <a class="menu-card span-4" href="samples/beauty.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-skin-880.jpg" alt="Home screen of the skin clinic demo site" data-pt-alt="Tela inicial do site de demonstração da clínica de pele" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card" data-pt="Clínica de pele">Skin clinic</span>
+            </a>
+            <a class="menu-card span-4" href="samples/legal.html#preview">
+              <div class="panel"><img class="frame__img" src="assets/img/work-law-880.jpg" alt="Home screen of the law firm demo site" data-pt-alt="Tela inicial do site de demonstração do escritório de advocacia" width="880" height="550" decoding="async" data-source="client" data-subject="demo site"></div>
+              <span class="t-card" data-pt="Escritório de advocacia">Law firm</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="index.html#pricing" data-pt="Preços">Prices</a></div>
+      <div class="nav__item"><a class="nav__link" href="index.html#process" data-pt="Etapas">Steps</a></div>
+    </nav>
+    <div class="nav__actions">
+      <div class="lang" role="group" aria-label="Language" data-pt-aria-label="Idioma">
+        <button type="button" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false" aria-label="Português">PT</button>
+      </div>
+      <a class="btn btn--primary" href="index.html#audit" data-pt="Pedir auditoria grátis">Get a free audit</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <p><a class="link" href="index.html">ReviewLoop</a></p>
+  <section class="credits-list" id="credits" aria-labelledby="credits-h">
+    <h1 id="credits-h">Photograph credits</h1>
+    <ul>
+      <li><p><b>“A hairdresser at work in Ivory Coast”</b> by Melchisedek ABAKA. Licence: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source: <a href="https://commons.wikimedia.org/wiki/File:A_hairdresser_at_work_in_Ivory_Coast.jpg">Wikimedia Commons</a>. Changes: resized to 500, 960 and 1280 px wide JPEG copies and cropped by the page layout for the opening screen. The adapted copies are shared under the same licence, CC BY-SA 4.0.</p></li>
+      <li><p><b>“Man mowing the lawn in a suburban garden”</b> by Shixart1985. Licence: <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Source: <a href="https://commons.wikimedia.org/wiki/File:Man_mowing_the_lawn_in_a_suburban_garden.jpg">Wikimedia Commons</a>. Changes: resized to 500 and 960 px wide JPEG copies and cropped by the page layout in the steps section.</p></li>
+      <li><p><b>“Hands-coffee-smartphone-technology (23698591814)”</b> by www.Pixel.la Free Stock Photos. Licence: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. Source: <a href="https://commons.wikimedia.org/wiki/File:Hands-coffee-smartphone-technology_(23698591814).jpg">Wikimedia Commons</a>. Changes: resized to 500, 960 and 1280 px wide JPEG copies and cropped by the page layout in the audit section.</p></li>
+    </ul>
+    <p>The screenshots of the demo sites and the pictures of the profile checklist, the phone, the QR card and the review text were made by ReviewLoop.</p>
+  </section>
+</main>
+
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h" data-pt="Veja o que falta no seu perfil do Google">See what your Google profile is missing</h2>
+        <p data-pt="Grátis, em inglês ou português, em até 2 dias úteis.">Free, in English or Portuguese, within 2 business days.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="index.html#audit"><span data-pt="Pedir auditoria grátis">Get a free audit</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="index.html"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+          <p class="footer__lede" data-pt="Sites, perfis no Google Business e cartões QR de avaliação para negócios locais nos EUA.">Websites, Google Business Profiles and review QR cards for local businesses in the US.</p>
+        </div>
+        <div class="span-2 footer__col"><h3 data-pt="Setup">Setup</h3><ul><li><a href="index.html#setup" data-pt="O que inclui">What it includes</a></li><li><a href="index.html#pricing" data-pt="Preços">Prices</a></li></ul></div>
+        <div class="span-2 footer__col"><h3 data-pt="Trabalho">Work</h3><ul><li><a href="index.html#work" data-pt="Sites de demonstração">Demo sites</a></li><li><a href="index.html#process" data-pt="Etapas">Steps</a></li></ul></div>
+        <div class="span-2 footer__col footer__col--contact"><h3 data-pt="Contato">Contact</h3><ul><li><a href="index.html#audit" data-pt="Auditoria grátis">Free audit</a></li></ul></div>
+        <div class="span-2 footer__col footer__col--studio"><h3 data-pt="Estúdio">Studio</h3><ul><li data-pt="No Brasil">In Brazil</li><li data-pt="Inglês e português">English and Portuguese</li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 ReviewLoop. <span data-pt="Estúdio web baseado no Brasil. Os sites de demonstração mostram negócios fictícios.">Web studio based in Brazil. The demo sites show fictional businesses.</span></span>
+        <a class="credits" href="credits.html">Photographs via Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+/* EN/PT: English is written in the page; each [data-pt] holds the Portuguese, swapped in on a click.
+   Attributes take data-pt-<name> (alt, aria-label, data-sent ...). The choice is kept per visitor. */
+(function () {
+  var root = document.documentElement;
+  var attrs = ['src', 'srcset', 'alt', 'aria-label', 'data-sent', 'data-sending', 'data-failed', 'data-fix'];
+  var title = { en: document.title, pt: 'ReviewLoop: sites e perfis no Google para negócios locais nos EUA' };
+  function setLang(l) {
+    document.querySelectorAll('[data-pt]').forEach(function (el) {
+      if (!('en' in el.dataset)) el.dataset.en = el.textContent;
+      var text = l === 'pt' ? el.dataset.pt : el.dataset.en;
+      el.textContent = text;
+      if ('text' in el.dataset) el.dataset.text = text;
+    });
+    attrs.forEach(function (a) {
+      document.querySelectorAll('[data-pt-' + a + ']').forEach(function (el) {
+        var key = 'en-' + a;
+        if (el.getAttribute('data-' + key) === null) el.setAttribute('data-' + key, el.getAttribute(a) || '');
+        el.setAttribute(a, l === 'pt' ? el.getAttribute('data-pt-' + a) : el.getAttribute('data-' + key));
+      });
+    });
+    root.lang = l === 'pt' ? 'pt-BR' : 'en';
+    document.title = title[l];
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    try { localStorage.setItem('rl-lang', l); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+  var start = 'en';
+  try { start = localStorage.getItem('rl-lang') || 'en'; } catch (e) {}
+  if (location.hash === '#pt') start = 'pt';
+  if (location.hash === '#en') start = 'en';
+  if (start === 'pt') setLang('pt');
+
+  /* a failed send: system.js keeps what was typed and writes data-failed in the status line; under it,
+     a mailto with the same details, so the request can still go by email */
+  var form = document.querySelector('#audit form.form');
+  var status = form && form.querySelector('[data-form-status]');
+  var fallback = form && form.querySelector('.form__fallback');
+  if (status && fallback) {
+    new MutationObserver(function () {
+      var text = status.textContent.trim();
+      var failed = text !== '' && text === (form.getAttribute('data-failed') || '').trim();
+      if (failed) {
+        var f = form.elements, lines = [];
+        [['Name', 'name'], ['Email', 'email'], ['Business', 'business'], ['Town and state', 'city'], ['Type', 'type'], ['Link', 'link']].forEach(function (p) {
+          if (f[p[1]] && f[p[1]].value) lines.push(p[0] + ': ' + f[p[1]].value);
+        });
+        fallback.querySelector('[data-fallback-mail]').href = 'mailto:leonardodsximenes@gmail.com?subject=' +
+          encodeURIComponent('ReviewLoop: new audit request') + '&body=' + encodeURIComponent(lines.join('\n'));
+      }
+      fallback.hidden = !failed;
+    }).observe(status, { childList: true, characterData: true, subtree: true });
+  }
+})();
+</script>
+</body>
+</html>
