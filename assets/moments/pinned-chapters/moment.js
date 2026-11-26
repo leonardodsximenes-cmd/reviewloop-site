@@ -47,7 +47,7 @@ export default function (root, opts, lib) {
   const grid = root.querySelector('.mo-pc__grid');
   let live = false, scrubber = null, k = -1;
   const wide = () => matchMedia('(min-width: 1024px)').matches;
-  const fits = () => !lib.reduced() && wide() && innerHeight >= 640;
+  const fits = () => false; // static rows on every screen: the pinned scroll left a blank screen
   const show = i => {
     if (i === k) return;
     k = i;
