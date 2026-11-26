@@ -294,8 +294,13 @@ function forms() {
       const wait = setTimeout(() => say(form.dataset.sending || 'Sending'), 300);
       if (button) { button.disabled = true; button.setAttribute('aria-busy', 'true'); }
       try {
-        const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const ctl = new AbortController();
+        const kill = setTimeout(() => ctl.abort(), 12000);
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, signal: ctl.signal });
+        clearTimeout(kill);
         if (!res.ok) throw new Error(String(res.status));
+        const out = await res.json().catch(() => ({}));
+        if (out && (out.success === false || out.success === 'false')) throw new Error('rejected');
         clearTimeout(wait); form.reset(); say(form.dataset.sent || 'Sent.');
       } catch {
         clearTimeout(wait); say(form.dataset.failed || 'Not sent: the connection failed. Your words are still here; try again.');
