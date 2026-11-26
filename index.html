@@ -56,6 +56,8 @@
   #pricing .plan-col { display: flex; flex-direction: column; align-items: flex-start; }
   #pricing .plan-col > .rows { align-self: stretch; }
   #pricing .plan-col h3 { font-size: var(--t-card); font-weight: 500; }
+  /* compact rhythm: these sections take the height of their content, not a full screen each */
+  main > #work, main > #pricing, main > #process, main > #audit, footer#contact { height: auto !important; min-height: 0 !important; }
   /* the phone: the setup at rest fills its two screens; the steps' photograph stands tall */
   @media (max-width: 639px) {
     main > #setup:not(.is-live) { min-height: 200svh; }
