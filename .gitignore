@@ -49,3 +49,6 @@ assets/**
 !assets/system.js
 !assets/ui/cards.css
 !assets/ui/ui.js
+!assets/img/photo-salon-500.jpg
+!assets/img/photo-salon-960.jpg
+!assets/img/photo-salon-1280.jpg

@@ -57,6 +57,8 @@
   #pricing .plan-col > .rows { align-self: stretch; }
   #pricing .plan-col h3 { font-size: var(--t-card); font-weight: 500; }
   /* compact rhythm: these sections take the height of their content, not a full screen each */
+  /* the three demo cards stay on one row from 1024px (they wrapped 2+1 below 1280px and left a blank band) */
+  @media (min-width: 1024px) { #work .grid > .card { grid-column: span 4 !important; } }
   main > #work, main > #pricing, main > #process, main > #audit, footer#contact { height: auto !important; min-height: 0 !important; }
   /* the phone: the setup at rest fills its two screens; the steps' photograph stands tall */
   @media (max-width: 639px) {
@@ -101,7 +103,7 @@
 <header class="nav nav--split">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top" data-pt="Pular para o conteúdo">Skip to content</a>
-    <a class="nav__logo" href="#top"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+    <a class="nav__logo" href="#top"><svg class="logo-rl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="42" height="42" rx="10" fill="#1F5A3F"/><path d="M14 35V13h9a6 6 0 0 1 0 12h-9m8 0 7 10" fill="none" stroke="#F2EBDD" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M34.00,10.00 L35.23,13.30 L38.76,13.45 L36.00,15.65 L36.94,19.05 L34.00,17.10 L31.06,19.05 L32.00,15.65 L29.24,13.45 L32.77,13.30Z" fill="#FFBE0B"/></svg>ReviewLoop</a>
     <nav class="nav__links" aria-label="Main" data-pt-aria-label="Principal">
       <div class="nav__item"><a class="nav__link" href="#setup" data-pt="Setup">Setup</a></div>
       <div class="nav__item">
@@ -141,7 +143,7 @@
 
 <main id="top">
   <section class="hero hero--photo" data-enter data-calm="left" aria-labelledby="hero-h">
-    <img class="hero__bg" src="assets/img/photo-f64429213-1280.jpg" srcset="assets/img/photo-f64429213-500.jpg 500w, assets/img/photo-f64429213-960.jpg 960w, assets/img/photo-f64429213-1280.jpg 1280w" sizes="(max-width: 639px) 188vw, 100vw" width="1280" height="853" alt="A hairdresser styles a client's hair in a small salon" data-pt-alt="Uma cabeleireira penteia uma cliente em um salão pequeno" style="--ly-pos: 50% 35%; --ly-pos-phone: 62% 35%" fetchpriority="high" decoding="async" data-phone-fill data-source="stand-in" data-subject="local salon at work">
+    <img class="hero__bg" src="assets/img/photo-salon-1280.jpg" srcset="assets/img/photo-salon-500.jpg 500w, assets/img/photo-salon-960.jpg 960w, assets/img/photo-salon-1280.jpg 1280w" sizes="(max-width: 639px) 188vw, 100vw" width="1280" height="853" alt="A salon owner greets a customer at the counter of her small shop" data-pt-alt="A dona de um salão atende uma cliente no balcão da sua loja" style="--ly-pos: 50% 40%; --ly-pos-phone: 72% 40%" fetchpriority="high" decoding="async" data-phone-fill data-source="stand-in" data-subject="local salon at work">
     <div class="wrap"><div class="hero-text">
       <div class="hero__text">
         <h1 id="hero-h" data-pt="Sites e avaliações no Google para negócios locais nos EUA">Websites and Google reviews for local US businesses</h1>
@@ -326,7 +328,7 @@
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top"><span class="mark" data-mark="ring" aria-hidden="true"></span>ReviewLoop</a>
+          <a class="nav__logo" href="#top"><svg class="logo-rl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="42" height="42" rx="10" fill="#F2EBDD"/><path d="M14 35V13h9a6 6 0 0 1 0 12h-9m8 0 7 10" fill="none" stroke="#1F5A3F" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M34.00,10.00 L35.23,13.30 L38.76,13.45 L36.00,15.65 L36.94,19.05 L34.00,17.10 L31.06,19.05 L32.00,15.65 L29.24,13.45 L32.77,13.30Z" fill="#FFBE0B"/></svg>ReviewLoop</a>
           <p class="footer__lede" data-pt="Sites, perfis no Google Business e cartões QR de avaliação para negócios locais nos EUA.">Websites, Google Business Profiles and review QR cards for local businesses in the US.</p>
         </div>
         <div class="span-2 footer__col"><h3 data-pt="Setup">Setup</h3><ul><li><a href="#setup" data-pt="O que inclui">What it includes</a></li><li><a href="#pricing" data-pt="Preços">Prices</a></li></ul></div>
@@ -336,7 +338,7 @@
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 ReviewLoop. <span data-pt="Estúdio web baseado no Brasil. Os sites de demonstração mostram negócios fictícios.">Web studio based in Brazil. The demo sites show fictional businesses.</span></span>
-        <a class="credits" href="credits.html">Photographs via Wikimedia Commons</a>
+        <a class="credits" href="credits.html">Photograph credits</a>
       </div>
     </div>
   </div>
