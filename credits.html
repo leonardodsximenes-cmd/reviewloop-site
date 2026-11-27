@@ -166,7 +166,7 @@
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 ReviewLoop. <span data-pt="Estúdio web baseado no Brasil. Os sites de demonstração mostram negócios fictícios.">Web studio based in Brazil. The demo sites show fictional businesses.</span></span>
-        <a class="credits" href="credits.html">Photograph credits</a>
+        <a class="credits" href="credits.html" data-pt="Créditos das fotos">Photograph credits</a>
       </div>
     </div>
   </div>
@@ -222,7 +222,7 @@
         [['Name', 'name'], ['Email', 'email'], ['Business', 'business'], ['Town and state', 'city'], ['Type', 'type'], ['Link', 'link']].forEach(function (p) {
           if (f[p[1]] && f[p[1]].value) lines.push(p[0] + ': ' + f[p[1]].value);
         });
-        fallback.querySelector('[data-fallback-mail]').href = 'mailto:leonardodsximenes@gmail.com?subject=' +
+        fallback.querySelector('[data-fallback-mail]').href = 'mailto:reviewloop@igpatrimonial.com?subject=' +
           encodeURIComponent('ReviewLoop: new audit request') + '&body=' + encodeURIComponent(lines.join('\n'));
       }
       fallback.hidden = !failed;
